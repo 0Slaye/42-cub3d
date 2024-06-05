@@ -11,7 +11,9 @@ CFLAGS = -Wall -Werror -Wextra
 ################################################################################
 
 LIBFT = sources/libft
-SRCS_FILES =	main.c
+SRCS_FILES =	main.c \
+					get_next_line/get_next_line.c \
+					get_next_line/get_next_line_utils.c
 SRCS = $(addprefix sources/, $(SRCS_FILES))
 OBJS = $(SRCS:.c=.o)
 INCLS = includes/
