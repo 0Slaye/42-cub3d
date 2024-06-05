@@ -1,0 +1,65 @@
+################################################################################
+#                                     CONFIG                                   #
+################################################################################
+
+NAME = cub3d
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+
+################################################################################
+#                                 PROGRAM'S SRCS                               #
+################################################################################
+
+LIBFT = sources/libft
+SRCS_FILES =	main.c
+SRCS = $(addprefix sources/, $(SRCS_FILES))
+OBJS = $(SRCS:.c=.o)
+INCLS = includes/
+
+################################################################################
+#                                      EXTRA                                   #
+################################################################################
+
+NLIBFTFILES := $(shell find ./sources/libft -name "*.c" | wc -l)
+NFILES := $$(($(shell find ./sources -name "*.c" | wc -l) - $(NLIBFTFILES)))
+COUNTER := 0
+
+UPDATE = \033[0K\r
+RESET = \033[0m
+BOLD = \033[1m
+WHITE = \033[1;37m
+RED = \033[1;31m
+GREEN = \033[1;32m
+BLUE = \033[1;34m
+
+################################################################################
+#                                    COMMANDS                                  #
+################################################################################
+
+all : $(NAME)
+
+$(NAME) : $(OBJS)
+	@make bonus -C $(LIBFT) --no-print-directory
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)/libft.a
+	@echo "$(BOLD)[$(NAME)] : [$(BLUE)binary$(WHITE)] [$(GREEN)✔️$(WHITE)]$(RESET)"
+
+%.o : %.c
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLS)
+
+clean :
+	@make clean -C $(LIBFT) --no-print-directory
+	@rm -f $(OBJS)
+	@echo "$(BOLD)[$(NAME)] : [$(BLUE)objects$(WHITE)] [$(RED)✘$(WHITE)]$(RESET)"
+
+fclean : clean
+	@make fclean -C $(LIBFT) --no-print-directory
+	@rm -f $(NAME)
+	@echo "$(BOLD)[$(NAME)] : [$(BLUE)binary$(WHITE)] [$(RED)✘$(WHITE)]$(RESET)"
+
+re : fclean all
+
+valgrind : all
+	@clear
+	@valgrind --quiet --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=valgrind.supp ./minishell
+
+.PHONY : all clean fclean re
