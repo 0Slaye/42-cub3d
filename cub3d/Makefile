@@ -4,7 +4,7 @@
 
 NAME = cub3d
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
@@ -14,6 +14,7 @@ LIBFT = sources/libft
 SRCS_FILES =	main.c \
 					memory.c \
 					parser/parser.c \
+					parser/parser_utils.c \
 					get_next_line/get_next_line.c \
 					get_next_line/get_next_line_utils.c
 SRCS = $(addprefix sources/, $(SRCS_FILES))
