@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:41:44 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 16:29:41 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/10 16:34:07 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	get_file(t_program *program, int fd)
 		value = get_next_line(fd);
 	}
 }
-
 
 void	parser(t_program *program)
 {
