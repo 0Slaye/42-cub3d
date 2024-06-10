@@ -6,13 +6,13 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:41:44 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 14:55:59 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/10 15:26:40 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
 
-int	parser(char **argv)
+void	parser(t_program *program)
 {
-	return (1);
+	printf("Parsing: %s.\n", program->argv[1]);
 }

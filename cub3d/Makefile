@@ -13,6 +13,7 @@ CFLAGS = -Wall -Werror -Wextra
 LIBFT = sources/libft
 SRCS_FILES =	main.c \
 					memory.c \
+					parser/parser.c \
 					get_next_line/get_next_line.c \
 					get_next_line/get_next_line_utils.c
 SRCS = $(addprefix sources/, $(SRCS_FILES))

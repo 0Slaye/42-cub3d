@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 15:15:33 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/10 15:25:34 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ typedef struct program
 	
 }	t_program;
 
+// Main
 void	fexit(t_program *program, int code, char *value, int fd);
+
+// Parser
+void	parser(t_program *program);
 
 #endif

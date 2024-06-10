@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 15:21:45 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/10 15:24:36 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ int	main(int argc, char **argv)
 
 	program = p_setup(argc, argv);
 	p_verify(program);
+	parser(program);
 	fexit(program, EX_SUCCESS, DB_END, STDIN_FILENO);
 }
