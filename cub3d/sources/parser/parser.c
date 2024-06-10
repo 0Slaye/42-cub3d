@@ -6,14 +6,14 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:41:44 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 16:34:07 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/10 17:18:35 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
 #include "get_next_line.h"
 
-void	get_file(t_program *program, int fd)
+void	get_map_file(t_program *program, int fd)
 {
 	t_list	*holder;
 	char	*value;
@@ -33,6 +33,18 @@ void	get_file(t_program *program, int fd)
 	}
 }
 
+void	set_map_vars(t_program *program)
+{
+	t_list	*holder;
+
+	holder = program->map->file;
+	while (holder)
+	{
+		set_map_vars_loop(program, holder->content);
+		holder = holder->next;
+	}
+}
+
 void	parser(t_program *program)
 {
 	int		fd;
@@ -40,6 +52,7 @@ void	parser(t_program *program)
 	fd = open(program->argv[1], O_RDONLY);
 	if (fd == -1)
 		fexit(program, EX_FAILURE, ER_OPEN, STDERR_FILENO);
-	get_file(program, fd);
+	get_map_file(program, fd);
+	set_map_vars(program);
 	close(fd);
 }

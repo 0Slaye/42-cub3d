@@ -6,25 +6,48 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:44:13 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 15:46:22 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/10 17:16:38 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
 
-void	set_map_data(t_map *map, char *value)
+char	*get_line_value(char *line)
 {
-	(void) map;
-	if (ft_strncmp(value, "NO ", 3) == 0)
-		printf("NO detected.\n");
-	if (ft_strncmp(value, "SO ", 3) == 0)
-		printf("SO detected.\n");
-	if (ft_strncmp(value, "WE ", 3) == 0)
-		printf("WE detected.\n");
-	if (ft_strncmp(value, "EA ", 3) == 0)
-		printf("EA detected.\n");
-	if (ft_strncmp(value, "F ", 2) == 0)
-		printf("F detected.\n");
-	if (ft_strncmp(value, "C ", 2) == 0)
-		printf("C detected.\n");
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] == ' ')
+		i++;
+	if (line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = '\0';
+	return (&line[i]);
+}
+
+void	set_map_vars_loop(t_program *program, char *line)
+{
+	if (ft_strncmp(line, "NO ", 3) == 0 && program->map->no != NULL)
+		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+	else if (ft_strncmp(line, "NO ", 3) == 0 && program->map->no == NULL)
+		program->map->no = ft_strdup(get_line_value(&line[2]));
+	if (ft_strncmp(line, "SO ", 3) == 0 && program->map->so != NULL)
+		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+	else if (ft_strncmp(line, "SO ", 3) == 0 && program->map->so == NULL)
+		program->map->so = ft_strdup(get_line_value(&line[2]));
+	if (ft_strncmp(line, "WE ", 3) == 0 && program->map->we != NULL)
+		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+	else if (ft_strncmp(line, "WE ", 3) == 0 && program->map->we == NULL)
+		program->map->we = ft_strdup(get_line_value(&line[2]));
+	if (ft_strncmp(line, "EA ", 3) == 0 && program->map->ea != NULL)
+		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+	else if (ft_strncmp(line, "EA ", 3) == 0 && program->map->ea == NULL)
+		program->map->ea = ft_strdup(get_line_value(&line[2]));
+	if (ft_strncmp(line, "F ", 2) == 0 && program->map->f != NULL)
+		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+	else if (ft_strncmp(line, "F ", 2) == 0 && program->map->f == NULL)
+		program->map->f = ft_strdup(get_line_value(&line[1]));
+	if (ft_strncmp(line, "C ", 2) == 0 && program->map->c != NULL)
+		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+	else if (ft_strncmp(line, "C ", 2) == 0 && program->map->c == NULL)
+		program->map->c = ft_strdup(get_line_value(&line[1]));
 }

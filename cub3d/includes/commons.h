@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 16:34:00 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/10 17:00:40 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define ER_MALLOC "Error\ncub3d: malloc function failed."
 # define ER_ARGS "Error\ncub3d: wrong parameters."
 # define ER_OPEN "Error\ncub3d: open function failed."
+# define ER_MAP "Error\ncub3d: map incorrect."
 
 typedef struct map
 {
@@ -48,6 +49,6 @@ void	fexit(t_program *program, int code, char *value, int fd);
 
 // Parser
 void	parser(t_program *program);
-void	set_map_data(t_map *map, char *value);
+void	set_map_vars_loop(t_program *program, char *value);
 
 #endif
