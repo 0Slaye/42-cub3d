@@ -12,7 +12,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = sources/libft
 SRCS_FILES =	main.c \
-					debug.c \
+					memory.c \
 					get_next_line/get_next_line.c \
 					get_next_line/get_next_line_utils.c
 SRCS = $(addprefix sources/, $(SRCS_FILES))
@@ -60,9 +60,5 @@ fclean : clean
 	@echo "$(BOLD)[$(NAME)] : [$(BLUE)binary$(WHITE)] [$(RED)✘$(WHITE)]$(RESET)"
 
 re : fclean all
-
-valgrind : all
-	@clear
-	@valgrind --quiet --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=valgrind.supp ./minishell
 
 .PHONY : all clean fclean re

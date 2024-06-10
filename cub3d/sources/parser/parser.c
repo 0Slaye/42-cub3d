@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 14:24:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 14:28:41 by slaye            ###   ########.fr       */
+/*   Created: 2024/06/10 14:41:44 by slaye             #+#    #+#             */
+/*   Updated: 2024/06/10 14:55:59 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
 
-void	ft_error(char *value)
+int	parser(char **argv)
 {
-	ft_putendl_fd("Error", STDERR_FILENO);
-	ft_putendl_fd(value, STDERR_FILENO);
+	return (1);
 }
