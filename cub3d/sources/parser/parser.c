@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:41:44 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 17:18:35 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/10 17:47:16 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,32 @@ void	set_map_vars(t_program *program)
 	}
 }
 
+void	check_map_vars(t_program *program)
+{
+	t_map	*map;
+
+	map = program->map;
+	if (!map->no || !map->so || !map->we || !map->ea || !map->f || !map->c)
+		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+}
+
+void	set_map_grid(t_program *program)
+{
+	t_list	*holder;
+	int		i;
+
+	holder = program->map->file;
+	i = 0;
+	while (holder)
+	{
+		if (i < 4)
+			i += set_map_grid_loop(holder->content);
+		else
+			// TODO: choose between t_list or char ** and add map value
+		holder = holder->next;
+	}
+}
+
 void	parser(t_program *program)
 {
 	int		fd;
@@ -54,5 +80,7 @@ void	parser(t_program *program)
 		fexit(program, EX_FAILURE, ER_OPEN, STDERR_FILENO);
 	get_map_file(program, fd);
 	set_map_vars(program);
+	check_map_vars(program);
+	set_map_grid(program);
 	close(fd);
 }
