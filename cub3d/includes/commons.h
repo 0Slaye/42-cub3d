@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 17:41:28 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 15:44:36 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct map
 	char	*ea;
 	char	*f;
 	char	*c;
-	char	**grid;
+	t_list	*grid;
 }	t_map;
 
 typedef struct program
@@ -42,6 +42,7 @@ typedef struct program
 	int		argc;
 	char	**argv;
 	t_map	*map;
+	int		fd;
 }	t_program;
 
 // Main
@@ -51,5 +52,8 @@ void	fexit(t_program *program, int code, char *value, int fd);
 void	parser(t_program *program);
 void	set_map_vars_loop(t_program *program, char *value);
 int		set_map_grid_loop(char *line);
+int		is_map_chars(char *line);
+void	set_map_grid(t_program *program);
+void	remove_nl(char *value);
 
 #endif

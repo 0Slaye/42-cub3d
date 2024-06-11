@@ -6,11 +6,23 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:04:16 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 17:05:07 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 16:00:10 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
+
+void	free_lst(t_list *lst)
+{
+	t_list	*holder;
+
+	while (lst)
+	{
+		holder = lst;
+		lst = lst->next;
+		free(holder);
+	}
+}
 
 void	fmap(t_map *map)
 {
@@ -28,6 +40,8 @@ void	fmap(t_map *map)
 		free(map->f);
 	if (map->c)
 		free(map->c);
+	if (map->grid)
+		free_lst(map->grid);
 	if (map)
 		free(map);
 }
@@ -35,6 +49,8 @@ void	fmap(t_map *map)
 void	fexit(t_program *program, int code, char *value, int fd)
 {
 	fmap(program->map);
+	if (program->fd != -1)
+		close(program->fd);
 	free(program);
 	ft_putendl_fd(value, fd);
 	exit(code);

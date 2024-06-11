@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/10 16:07:30 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 14:59:52 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_program	*p_setup(int argc, char **argv)
 	program->argc = argc;
 	program->argv = argv;
 	program->map = NULL;
+	program->fd = -1;
 	return (program);
 }
 
