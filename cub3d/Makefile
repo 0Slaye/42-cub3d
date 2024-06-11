@@ -12,6 +12,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 
 LIBFT = sources/libft
 SRCS_FILES =	main.c \
+					utils.c \
 					memory.c \
 					parser/parser.c \
 					parser/parser_utils.c \

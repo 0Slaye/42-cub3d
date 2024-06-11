@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 16:08:31 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 17:36:04 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct program
 
 // Main
 void	fexit(t_program *program, int code, char *value, int fd);
+void	free_split(char **split);
 
 // Parser
 void	parser(t_program *program);
