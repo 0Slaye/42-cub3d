@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:04:58 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 17:58:17 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 18:04:12 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	check_color(t_program *program, char *color)
 		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
 }
 
-void	check_grid(t_program *program, t_list *grid)
+void	check_lst_grid_chars(t_program *program, t_list *lst_grid)
 {
 	t_list	*holder;
 	char	c;
 	int		i;
 
-	holder = grid;
+	holder = lst_grid;
 	while (holder)
 	{
 		i = -1;
@@ -63,5 +63,6 @@ void	map_checker(t_program *program)
 {
 	check_color(program, program->map->f);
 	check_color(program, program->map->c);
-	check_grid(program, program->map->grid);
+	check_lst_grid_chars(program, program->map->lst_grid);
+	
 }

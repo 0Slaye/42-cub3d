@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 17:55:56 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 18:03:27 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ typedef struct map
 	char	*ea;
 	char	*f;
 	char	*c;
-	t_list	*grid;
+	t_list	*lst_grid;
+	char	**grid;
 }	t_map;
 
 typedef struct program

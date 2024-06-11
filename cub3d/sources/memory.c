@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:04:16 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 16:00:10 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 18:03:46 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	fmap(t_map *map)
 	if (map->c)
 		free(map->c);
 	if (map->grid)
-		free_lst(map->grid);
+		free_lst(map->lst_grid);
 	if (map)
 		free(map);
 }

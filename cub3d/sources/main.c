@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 14:59:52 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 18:03:28 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_map	*m_setup(t_program *program)
 	map->ea = NULL;
 	map->f = NULL;
 	map->c = NULL;
+	map->lst_grid = NULL;
 	map->grid = NULL;
 	return (map);
 }
