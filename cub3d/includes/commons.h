@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 17:36:04 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 17:55:56 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # define ER_ARGS "Error\ncub3d: wrong parameters."
 # define ER_OPEN "Error\ncub3d: open function failed."
 # define ER_MAP "Error\ncub3d: map incorrect."
+
+# define EMPTY '0'
+# define WALL '1'
+# define NORD 'N'
+# define SOUTH 'S'
+# define EST 'E'
+# define WEST 'W'
 
 typedef struct map
 {
@@ -56,6 +63,6 @@ int		set_map_grid_loop(char *line);
 int		is_map_chars(char *line);
 void	set_map_grid(t_program *program);
 void	remove_nl(char *value);
-void	p_checker(t_program *program);
+void	map_checker(t_program *program);
 
 #endif

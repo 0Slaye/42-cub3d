@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:04:58 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 17:35:54 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 17:58:17 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,29 @@ void	check_color(t_program *program, char *color)
 		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
 }
 
-void	p_checker(t_program *program)
+void	check_grid(t_program *program, t_list *grid)
+{
+	t_list	*holder;
+	char	c;
+	int		i;
+
+	holder = grid;
+	while (holder)
+	{
+		i = -1;
+		while (((char *) holder->content)[++i] != '\0')
+		{
+			c = ((char *) holder->content)[i];
+			if (c != EMPTY && c != WALL && c != NORD && c != SOUTH && c != EST && c != WEST && c != ' ')
+				fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+		}
+		holder = holder->next;
+	}
+}
+
+void	map_checker(t_program *program)
 {
 	check_color(program, program->map->f);
 	check_color(program, program->map->c);
+	check_grid(program, program->map->grid);
 }
