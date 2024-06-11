@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 15:44:36 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 16:08:31 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int		set_map_grid_loop(char *line);
 int		is_map_chars(char *line);
 void	set_map_grid(t_program *program);
 void	remove_nl(char *value);
+void	p_checker(t_program *program);
 
 #endif

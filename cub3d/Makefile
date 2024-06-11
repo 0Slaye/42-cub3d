@@ -16,6 +16,7 @@ SRCS_FILES =	main.c \
 					parser/parser.c \
 					parser/parser_utils.c \
 					parser/parser_grid.c \
+					parser/checker.c \
 					get_next_line/get_next_line.c \
 					get_next_line/get_next_line_utils.c
 SRCS = $(addprefix sources/, $(SRCS_FILES))

@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:41:44 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 15:50:34 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 16:08:50 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ void	parser(t_program *program)
 	check_map_vars(program);
 	set_map_grid(program);
 	close(program->fd);
+	p_checker(program);
 }
