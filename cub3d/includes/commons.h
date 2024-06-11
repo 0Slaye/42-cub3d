@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 18:03:27 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/11 18:20:06 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 
 # define EX_SUCCESS 0
 # define EX_FAILURE 1
-# define DB_END "Success\ncub3d: program exited."
-# define ER_MALLOC "Error\ncub3d: malloc function failed."
-# define ER_ARGS "Error\ncub3d: wrong parameters."
-# define ER_OPEN "Error\ncub3d: open function failed."
-# define ER_MAP "Error\ncub3d: map incorrect."
+# define DB_END "Success\ncub3D: program exited."
+# define ER_MALLOC "Error\ncub3D: malloc function failed."
+# define ER_ARGS "Error\ncub3D: wrong parameters."
+# define ER_OPEN "Error\ncub3D: open function failed."
+# define ER_MAP "Error\ncub3D: map incorrect."
 
 # define EMPTY '0'
 # define WALL '1'
