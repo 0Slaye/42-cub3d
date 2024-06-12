@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:53:21 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 16:26:13 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:13:13 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,22 @@ void	check_cell_border(t_program *program, char **grid, int y, int x)
 	if (selected_cell_check(grid[y][x]))
 	{
 		if (y == 0 || y == y_size || x == 0 || x == (int) ft_strlen(grid[y]))
-			fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 		if (!cell_if_check(grid[y - 1][x]))
-			fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 		if (!cell_if_check(grid[y - 1][x + 1]))
-			fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 		if (!cell_if_check(grid[y][x + 1]))
-			fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 		if (!cell_if_check(grid[y + 1][x + 1]))
-			fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 		if (!cell_if_check(grid[y + 1][x]))
-			fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 		if (!cell_if_check(grid[y + 1][x - 1]))
-			fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 		if (!cell_if_check(grid[y][x - 1]))
-			fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 		if (!cell_if_check(grid[y - 1][x - 1]))
-			fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 	}
 }

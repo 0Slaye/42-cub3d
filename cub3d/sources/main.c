@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 17:08:59 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:12:27 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	p_verify(t_program *program)
 {
 	if (program->argc != 2)
-		fexit(program, EX_FAILURE, ER_ARGS, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_ARGS, STDERR_FILENO);
 	if (ft_strrchr(program->argv[1], '.') == NULL)
-		fexit(program, EX_FAILURE, ER_ARGS, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_ARGS, STDERR_FILENO);
 	if (ft_strlen(ft_strrchr(program->argv[1], '.')) != 4)
-		fexit(program, EX_FAILURE, ER_ARGS, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_ARGS, STDERR_FILENO);
 	if (ft_strncmp(ft_strrchr(program->argv[1], '.'), ".cub", 4) != 0)
-		fexit(program, EX_FAILURE, ER_ARGS, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_ARGS, STDERR_FILENO);
 }
 
 t_program	*p_setup(int argc, char **argv)
@@ -30,7 +30,7 @@ t_program	*p_setup(int argc, char **argv)
 
 	program = ft_calloc(1, sizeof(t_program));
 	if (!program)
-		fexit(program, EX_FAILURE, ER_MALLOC, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_MALLOC, STDERR_FILENO);
 	program->argc = argc;
 	program->argv = argv;
 	program->map = NULL;
@@ -44,7 +44,7 @@ t_map	*m_setup(t_program *program)
 
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
-		fexit(program, EX_FAILURE, ER_MALLOC, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_MALLOC, STDERR_FILENO);
 	map->file = NULL;
 	map->no = NULL;
 	map->so = NULL;
@@ -66,5 +66,5 @@ int	main(int argc, char **argv)
 	p_verify(program);
 	parser(program);
 	s_window(program);
-	fexit(program, EX_SUCCESS, DB_END, STDIN_FILENO);
+	fexit(program, EXIT_SUCCESS, DB_END, STDIN_FILENO);
 }

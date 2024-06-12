@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:41:44 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 18:02:58 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:12:43 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_map_file(t_program *program)
 		if (!holder)
 		{
 			free(value);
-			fexit(program, EX_FAILURE, ER_OPEN, STDERR_FILENO);
+			fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
 		}
 		ft_lstadd_back(&program->map->file, holder);
 		value = get_next_line(program->fd);
@@ -50,14 +50,14 @@ void	check_map_vars(t_program *program)
 
 	map = program->map;
 	if (!map->no || !map->so || !map->we || !map->ea || !map->f || !map->c)
-		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 }
 
 void	parser(t_program *program)
 {
 	program->fd = open(program->argv[1], O_RDONLY);
 	if (program->fd == -1)
-		fexit(program, EX_FAILURE, ER_OPEN, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
 	get_map_file(program);
 	set_map_vars(program);
 	check_map_vars(program);

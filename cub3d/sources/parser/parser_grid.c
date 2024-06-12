@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:43:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 18:02:48 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:12:54 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	set_map_grid_lst(t_program *program, t_list *node)
 	remove_nl(node->content);
 	holder = ft_lstnew(node->content);
 	if (!holder)
-		fexit(program, EX_FAILURE, ER_MALLOC, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_MALLOC, STDERR_FILENO);
 	ft_lstadd_back(&program->map->lst_grid, holder);
 }
 
@@ -58,7 +58,7 @@ void	set_map_grid(t_program *program)
 			if (is_map_chars(holder->content))
 				step = 1;
 			if (!is_map_chars(holder->content) && step == 1)
-				fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+				fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 			if (step == 1)
 				set_map_grid_lst(program, holder);
 		}

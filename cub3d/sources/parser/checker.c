@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:04:58 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 16:31:54 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:13:04 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_color(t_program *program, char *color)
 
 	split = ft_split(color, ',');
 	if (!split)
-		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 	counter = -1;
 	while (split[++counter])
 	{
@@ -30,13 +30,13 @@ void	check_color(t_program *program, char *color)
 			if (!ft_isdigit(split[counter][i]) || ft_strlen(split[counter]) > 3)
 			{
 				free_split(split);
-				fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+				fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 			}
 		}
 	}
 	free_split(split);
 	if (counter != 3)
-		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 }
 
 void	check_lst_grid_chars(t_program *program, t_list *lst_grid)
@@ -55,14 +55,14 @@ void	check_lst_grid_chars(t_program *program, t_list *lst_grid)
 		{
 			c = ((char *) holder->content)[i];
 			if (c != EMPTY && c != WALL && c != NORD && c != SOUTH && c != EST && c != WEST && c != ' ')
-				fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+				fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 			else if (c == NORD || c == SOUTH || c == EST || c == WEST)
 				spawn++;
 		}
 		holder = holder->next;
 	}
 	if (spawn != 1)
-		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
 }
 
 void	set_grid_array(t_program *program)
@@ -74,7 +74,7 @@ void	set_grid_array(t_program *program)
 	size = ft_lstsize(program->map->lst_grid);
 	program->map->grid = ft_calloc(size + 1, sizeof(char *));
 	if (!program->map->grid)
-		fexit(program, EX_FAILURE, ER_MALLOC, STDERR_FILENO);
+		fexit(program, EXIT_FAILURE, ER_MALLOC, STDERR_FILENO);
 	holder = program->map->lst_grid;
 	i = 0;
 	while (holder)

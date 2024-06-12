@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 17:08:38 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:19:13 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include "../sources/libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
-# define EX_SUCCESS 0
-# define EX_FAILURE 1
 # define DB_END "Success\ncub3D: program exited."
 # define ER_MALLOC "Error\ncub3D: malloc function failed."
 # define ER_ARGS "Error\ncub3D: wrong parameters."
@@ -74,5 +73,6 @@ void	check_cell_border(t_program *program, char **grid, int y, int x);
 
 // Render
 void	s_window(t_program *program);
+void	hooks(void *program);
 
 #endif
