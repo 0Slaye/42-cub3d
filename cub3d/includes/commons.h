@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 18:20:06 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 15:54:26 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int		is_map_chars(char *line);
 void	set_map_grid(t_program *program);
 void	remove_nl(char *value);
 void	map_checker(t_program *program);
+void	check_cell_border(t_program *program, char **grid, int y, int x);
 
 #endif

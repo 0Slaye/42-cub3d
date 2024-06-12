@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:04:58 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 18:19:48 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 15:55:53 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,7 @@ void	check_grid_norm(t_program *program, char **grid)
 	{
 		x = -1;
 		while (grid[y][++x] != '\0')
-		{
-			//TODO: algo to check if ok
-			continue ;
-		}
+			check_cell_border(program, grid, y, x);
 	}
 }
 
