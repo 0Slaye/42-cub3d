@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:04:58 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 15:55:53 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 16:31:54 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	check_lst_grid_chars(t_program *program, t_list *lst_grid)
 	t_list	*holder;
 	char	c;
 	int		i;
+	int		spawn;
 
+	spawn = 0;
 	holder = lst_grid;
 	while (holder)
 	{
@@ -54,9 +56,13 @@ void	check_lst_grid_chars(t_program *program, t_list *lst_grid)
 			c = ((char *) holder->content)[i];
 			if (c != EMPTY && c != WALL && c != NORD && c != SOUTH && c != EST && c != WEST && c != ' ')
 				fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
+			else if (c == NORD || c == SOUTH || c == EST || c == WEST)
+				spawn++;
 		}
 		holder = holder->next;
 	}
+	if (spawn != 1)
+		fexit(program, EX_FAILURE, ER_MAP, STDERR_FILENO);
 }
 
 void	set_grid_array(t_program *program)
