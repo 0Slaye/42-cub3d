@@ -49,7 +49,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	@make bonus -C $(LIBFT) --no-print-directory
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)/libft.a
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)/libft.a MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 	@echo "$(BOLD)[$(NAME)] : [$(BLUE)binary$(WHITE)] [$(GREEN)✔️$(WHITE)]$(RESET)"
 
 %.o : %.c

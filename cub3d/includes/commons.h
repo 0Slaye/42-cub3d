@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 15:54:26 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 16:53:51 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include "../sources/libft/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
 # define EX_SUCCESS 0
 # define EX_FAILURE 1
