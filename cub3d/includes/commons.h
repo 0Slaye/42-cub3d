@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 16:53:51 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:08:38 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define ER_ARGS "Error\ncub3D: wrong parameters."
 # define ER_OPEN "Error\ncub3D: open function failed."
 # define ER_MAP "Error\ncub3D: map incorrect."
+# define ER_MLX "Error\ncub3D: mlx system failed."
 
 # define EMPTY '0'
 # define WALL '1'
@@ -32,6 +33,8 @@
 # define SOUTH 'S'
 # define EST 'E'
 # define WEST 'W'
+# define W_WIDTH 1080
+# define W_HEIGHT 720
 
 typedef struct map
 {
@@ -52,6 +55,7 @@ typedef struct program
 	char	**argv;
 	t_map	*map;
 	int		fd;
+	mlx_t	*mlx;
 }	t_program;
 
 // Main
@@ -67,5 +71,8 @@ void	set_map_grid(t_program *program);
 void	remove_nl(char *value);
 void	map_checker(t_program *program);
 void	check_cell_border(t_program *program, char **grid, int y, int x);
+
+// Render
+void	s_window(t_program *program);
 
 #endif

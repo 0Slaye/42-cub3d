@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 16:57:28 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/12 17:08:59 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int	main(int argc, char **argv)
 	program->map = m_setup(program);
 	p_verify(program);
 	parser(program);
+	s_window(program);
 	fexit(program, EX_SUCCESS, DB_END, STDIN_FILENO);
 }
