@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:04:16 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/11 18:12:06 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/14 14:55:00 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	fexit(t_program *program, int code, char *value, int fd)
 	fmap(program->map);
 	if (program->fd != -1)
 		close(program->fd);
+	if (program->player)
+		free(program->player);
 	free(program);
 	ft_putendl_fd(value, fd);
 	exit(code);
