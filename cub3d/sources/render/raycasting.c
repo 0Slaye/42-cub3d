@@ -6,78 +6,66 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 16:03:52 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/17 19:44:13 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
-#define RAYS 10.0
-#define ANGLE 80.0
-#define SCELL 1.0
-#define PI 3.14159265359
-#define OFFSET 0.000001
 
-void	horizontal_upper(t_player *player, t_ray *ray)
+int	is_in_map(char **grid, int y, int x)
 {
-	if (ray->dist == 0)
-	{
-		ray->cY = player->y - floor(player->y) + OFFSET;
-		ray->cX = ray->cY / tan(player->rotation);
-		ray->dist += sqrt(ray->cY * ray->cY + ray->cX * ray->cX);
-		ray->pY = floor(player->y - ray->cY);
-		ray->pX = floor(player->x + ray->cX);
-	}
-	else
-	{
-		ray->cY += SCELL;
-		ray->cX += ray->cY / tan(player->rotation);
-		ray->dist += sqrt(ray->cY * ray->cY + ray->cX * ray->cX);
-		ray->pY = floor(player->y - ray->cY);
-		ray->pX = floor(player->x + ray->cX);
-	}
+	int	i;
+
+	i = 0;
+	while (grid[i])
+		i++;
+	if (y < 0 || y > i)
+		return (0);
+	else if (x < 0 || x > (int) ft_strlen(grid[y]))
+		return (0);
+	return (1);
 }
 
-void	horizontal_lower(t_player *player, t_ray *ray)
+int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
-	if (ray->dist == 0)
-	{
-		ray->cY = player->y - floor(player->y) + OFFSET;
-		ray->cX = ray->cY / tan(player->rotation);
-		ray->dist += sqrt(ray->cY * ray->cY + ray->cX * ray->cX);
-		ray->pY = floor(player->y + ray->cY);
-		ray->pX = floor(player->x + ray->cX);
-	}
-	else
-	{
-		ray->cY += SCELL;
-		ray->cX += ray->cY / tan(player->rotation);
-		ray->dist += sqrt(ray->cY * ray->cY + ray->cX * ray->cX);
-		ray->pY = floor(player->y + ray->cY);
-		ray->pX = floor(player->x + ray->cX);
-	}
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-double	get_horizontal(t_program *program)
+void	draw_line(t_program *program, int step, double distance)
 {
-	t_player	*player;
-	t_ray		ray;
+	int	i;
+	int	length;
+	int	holder;
 
-	player = program->player;
-	ray.pX = floor(player->x);
-	ray.pY = floor(player->y);
-	ray.dist = 0;
-	while (program->map->grid[(int) ray.pY][(int) ray.pX] != WALL)
+	length = W_HEIGHT / distance;
+	i = (W_HEIGHT / 2) - (length / 2);
+	holder = i + length;
+	while (i < holder)
 	{
-		if (player->rotation > 0 && player->rotation < PI)
-			horizontal_upper(player, &ray);
-		else
-			horizontal_lower(player, &ray);
+		mlx_put_pixel(program->screen, step, i, 0xFFFFFFFF);
+		i++;
 	}
-	return (ray.dist);
 }
 
 void	raycasting(t_program *program)
 {
-	program->player->rotation = PI / 2;
-	printf("Distance: %f\n", get_horizontal(program));
+	double	horizontal;
+	double	vertical;
+	double	angle;
+	int		step;
+
+	angle = 0;
+	step = W_WIDTH;
+	while (angle < (0.17 * 60))
+	{
+		program->player->rotation = angle;
+		horizontal = get_horizontal(program);
+		vertical = get_vertical(program);
+		if (horizontal > vertical)
+			draw_line(program, step, horizontal);
+		else
+			draw_line(program, step, vertical);
+		angle += 0.17;
+		step--;
+	}
 }

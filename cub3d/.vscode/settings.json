@@ -3,6 +3,9 @@
         "commons.h": "c",
         "type_traits": "c",
         "libft.h": "c",
-        "stdio.h": "c"
-    }
+        "stdio.h": "c",
+        "cmath": "c",
+        "algorithm": "c"
+    },
+    "cmake.ignoreCMakeListsMissing": true
 }

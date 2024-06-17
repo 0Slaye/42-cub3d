@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 14:57:17 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/17 19:43:05 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_program	*p_setup(int argc, char **argv)
 	program->map = NULL;
 	program->fd = -1;
 	program->player = NULL;
+	program->mlx = NULL;
+	program->screen = NULL;
 	return (program);
 }
 
@@ -67,8 +69,6 @@ int	main(int argc, char **argv)
 	p_verify(program);
 	parser(program);
 	program->player = s_player(program);
-	//printf("Player position: (%f,%f)\n", program->player->x, program->player->y);
-	//printf("Player facing: (%c)\n", program->player->spawn);
 	s_window(program);
 	fexit(program, EXIT_SUCCESS, DB_END, STDIN_FILENO);
 }

@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 15:58:40 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/17 19:24:52 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@
 # define SOUTH 'S'
 # define EST 'E'
 # define WEST 'W'
-# define W_WIDTH 1080
-# define W_HEIGHT 720
+# define W_WIDTH 512
+# define W_HEIGHT 512
+
+# define SCELL 1.0
+# define PI 3.14159265359
+# define OFFSET 0.000001
 
 typedef struct map
 {
@@ -71,6 +75,7 @@ typedef struct program
 	t_player	*player;
 	t_map		*map;
 	mlx_t		*mlx;
+	mlx_image_t	*screen;
 	char		**argv;
 	int			argc;
 	int			fd;
@@ -95,5 +100,8 @@ void		s_window(t_program *program);
 void		hooks(void *program);
 t_player	*s_player(t_program *program);
 void		raycasting(t_program *program);
+double		get_horizontal(t_program *program);
+double		get_vertical(t_program *program);
+int			is_in_map(char **grid, int y, int x);
 
 #endif
