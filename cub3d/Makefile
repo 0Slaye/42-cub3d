@@ -22,6 +22,7 @@ SRCS_FILES =	main.c \
 					render/window.c \
 					render/hooks.c \
 					render/player.c \
+					render/raycasting.c \
 					get_next_line/get_next_line.c \
 					get_next_line/get_next_line_utils.c
 SRCS = $(addprefix sources/, $(SRCS_FILES))

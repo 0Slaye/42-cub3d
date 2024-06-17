@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/14 15:12:09 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/17 15:58:40 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,17 @@ typedef struct player
 	int		spawn;
 	double	x;
 	double	y;
+	double	rotation;
 }	t_player;
+
+typedef struct ray
+{
+	double	cX;
+	double	cY;
+	double	pX;
+	double	pY;
+	double	dist;
+}	t_ray;
 
 typedef struct program
 {
@@ -84,5 +94,6 @@ void		check_cell_border(t_program *program, char **grid, int y, int x);
 void		s_window(t_program *program);
 void		hooks(void *program);
 t_player	*s_player(t_program *program);
+void		raycasting(t_program *program);
 
 #endif

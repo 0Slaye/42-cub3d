@@ -6,28 +6,11 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:03:39 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/14 17:21:19 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/17 15:46:06 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
-#define RAYS 10.0
-#define ANGLE 80.0
-#define SCELL 64.0
-
-void	raycasting(t_program *program)
-{
-	double	angle;
-	//int		Ay;
-	//int		Ax;
-
-	angle = ANGLE / RAYS;
-	while (angle < ANGLE)
-	{
-		printf("%f\n", floor(program->player->y / 64.0f));
-		angle += ANGLE / RAYS;
-	}
-}
 
 void	s_window(t_program *program)
 {
