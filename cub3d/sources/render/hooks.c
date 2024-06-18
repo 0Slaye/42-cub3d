@@ -3,33 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 19:45:12 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 15:38:00 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
 #define MOVE 0.01
 
-void	clear_image(t_program *program)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < W_HEIGHT)
-	{
-		x = 0;
-		while (x < W_WIDTH)
-		{
-			mlx_put_pixel(program->screen, y, x, 0xFF);
-			x++;
-		}
-		y++;
-	}
-}
 
 void	hooks(void *program)
 {
@@ -51,6 +34,6 @@ void	hooks(void *program)
 		p->player->x += MOVE;
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 		p->player->y += MOVE;
-	clear_image(program);
+	fc_printer(program);
 	raycasting(program);
 }
