@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 18:36:24 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/18 19:35:52 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,5 @@ void	hooks(void *program)
 		p->player->y += MOVE;
 	fc_printer(program);
 	raycasting(program);
+	draw_map(program);
 }
