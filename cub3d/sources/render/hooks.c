@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 19:45:12 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 16:03:57 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ void	hooks(void *program)
 		p->player->x += MOVE;
 	if (mlx_is_key_down(mlx, MLX_KEY_S))
 		p->player->y += MOVE;
+	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+		p->player->rotation += 0.01;
+	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+		p->player->rotation -= 0.01;
 	clear_image(program);
 	raycasting(program);
 }
