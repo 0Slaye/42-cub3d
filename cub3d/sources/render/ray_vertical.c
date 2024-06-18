@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:12:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 19:02:04 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 19:51:13 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	vertical_upper(t_player *player, t_ray *ray)
 	{
 		ray->cX += SCELL;
 		ray->cY += SCELL * fabs(tan(player->rayrot));
-		ray->dist += sqrt(tan(player->rayrot) * tan(player->rayrot) + SCELL);
+		ray->dist += sqrt(SCELL + (SCELL * fabs(tan(player->rayrot))) * (SCELL * fabs(tan(player->rayrot))));
 		ray->pY = floor(player->y - ray->cY);
 		ray->pX = floor(player->x + ray->cX);
 	}

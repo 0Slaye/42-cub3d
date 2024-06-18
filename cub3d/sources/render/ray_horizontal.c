@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:12:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 18:56:34 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 19:37:43 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	horizontal_upper(t_player *player, t_ray *ray)
 	if (ray->dist == 0)
 	{
 		ray->cY = player->y - floor(player->y) + OFFSET;
-		ray->cX = ray->cY / fabs(tan(player->rotation));
+		ray->cX = ray->cY / tan(player->rayrot);
 		ray->dist += sqrt(ray->cY * ray->cY + ray->cX * ray->cX);
 		ray->pY = floor(player->y - ray->cY);
 		ray->pX = floor(player->x + ray->cX);
@@ -25,8 +25,8 @@ void	horizontal_upper(t_player *player, t_ray *ray)
 	else
 	{
 		ray->cY += SCELL;
-		ray->cX += ray->cY / fabs(tan(player->rotation));
-		ray->dist += sqrt(SCELL + (ray->cY / fabs(tan(player->rotation))) * (ray->cY / fabs(tan(player->rotation))));
+		ray->cX += SCELL / tan(player->rayrot);
+		ray->dist += sqrt(SCELL + (SCELL / tan(player->rayrot)) * (SCELL / tan(player->rayrot)));
 		ray->pY = floor(player->y - ray->cY);
 		ray->pX = floor(player->x + ray->cX);
 	}
@@ -61,11 +61,11 @@ double	get_horizontal(t_program *program)
 	ray.pX = floor(player->x);
 	ray.pY = floor(player->y);
 	ray.dist = 0;
+	if (player->rayrot == 0 || player->rayrot == PI)
+		return (99999999);
 	while (is_in_map(program->map->grid, ray.pY, ray.pX) && program->map->grid[(int) ray.pY][(int) ray.pX] != WALL)
 	{
-		if (player->rotation == 0 || player->rotation == PI)
-			break ;
-		else if (player->rotation > 0 && player->rotation < PI)
+		if (player->rotation > 0 && player->rotation < PI)
 			horizontal_upper(player, &ray);
 		else
 			horizontal_lower(player, &ray);
