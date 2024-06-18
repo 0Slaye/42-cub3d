@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 18:06:51 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 20:57:25 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define WEST 'W'
 # define W_WIDTH 512
 # define W_HEIGHT 512
+
+#define MOVE 0.02
 
 # define SCELL 1.0
 # define PI 3.14159265358979323846

@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 20:26:05 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 21:22:48 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	is_in_map(char **grid, int y, int x)
 	i = 0;
 	while (grid[i])
 		i++;
-	if (y < 0 || y > i)
+	if (y < 0 || y >= i)
 		return (0);
-	else if (x < 0 || x > (int) ft_strlen(grid[y]))
+	else if (x < 0 || x >= (int) ft_strlen(grid[y]))
 		return (0);
 	return (1);
 }
@@ -59,8 +59,6 @@ void	raycasting(t_program *program)
 	while (i < rays)
 	{
 		program->player->rayrot = holder;
-		if (program->player->rayrot > PI / 2)
-			program->player->rayrot -= PI / 2;
 		horizontal = get_horizontal(program);
 		vertical = get_vertical(program);
 		if (horizontal < vertical)

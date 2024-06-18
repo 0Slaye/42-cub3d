@@ -6,12 +6,11 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 19:03:55 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 20:57:58 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
-#define MOVE 0.01
 
 bool	check_collision(t_program *p, double prediction_y, double prediction_x)
 {
@@ -41,9 +40,9 @@ void	hooks(void *program)
 	if (mlx_is_key_down(p->mlx, MLX_KEY_S) && (check_collision(p, p->player->y + MOVE, p->player->x) == false))
 		p->player->y += MOVE;
 	if (mlx_is_key_down(p->mlx, MLX_KEY_LEFT))
-		p->player->rotation += MOVE * 2;
+		p->player->rotation += MOVE;
 	if (mlx_is_key_down(p->mlx, MLX_KEY_RIGHT))
-		p->player->rotation -= MOVE * 2;
+		p->player->rotation -= MOVE;
 	fc_printer(program);
 	raycasting(program);
 }
