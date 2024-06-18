@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 18:10:29 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 18:53:58 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	draw_line(t_program *program, int step, double distance)
 	int	holder;
 
 	length = W_HEIGHT / distance;
+	printf("%f\n", distance);
 	if (length > W_HEIGHT)
 		length = W_HEIGHT;
 	i = (W_HEIGHT / 2) - (length / 2);
@@ -61,6 +62,7 @@ void	raycasting(t_program *program)
 		program->player->rayrot = holder;
 		horizontal = get_horizontal(program);
 		vertical = get_vertical(program);
+		draw_line(program, W_WIDTH - i, vertical);
 		if (horizontal < vertical)
 			draw_line(program, W_WIDTH - i, horizontal);
 		else

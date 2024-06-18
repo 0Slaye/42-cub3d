@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 18:07:24 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 18:17:16 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void	hooks(void *program)
 		p->player->x += MOVE;
 	if (mlx_is_key_down(p->mlx, MLX_KEY_S) && (check_collision(p, p->player->y += MOVE, p->player->x) == false))
 		p->player->y += MOVE;
+	if (mlx_is_key_down(p->mlx, MLX_KEY_LEFT))
+		p->player->rotation += MOVE * 2;
+	if (mlx_is_key_down(p->mlx, MLX_KEY_RIGHT))
+		p->player->rotation -= MOVE * 2;
 	fc_printer(program);
 	raycasting(program);
 }
