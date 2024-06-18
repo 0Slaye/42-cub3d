@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 19:44:13 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 14:40:34 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,24 @@ void	draw_line(t_program *program, int step, double distance)
 	int	holder;
 
 	length = W_HEIGHT / distance;
+	if (length > W_HEIGHT)
+		length = W_HEIGHT;
 	i = (W_HEIGHT / 2) - (length / 2);
 	holder = i + length;
 	while (i < holder)
-	{
-		mlx_put_pixel(program->screen, step, i, 0xFFFFFFFF);
-		i++;
-	}
+		mlx_put_pixel(program->screen, step, i++, 0xFFFFFFFF);
 }
 
 void	raycasting(t_program *program)
 {
 	double	horizontal;
 	double	vertical;
-	double	angle;
-	int		step;
 
-	angle = 0;
-	step = W_WIDTH;
-	while (angle < (0.17 * 60))
-	{
-		program->player->rotation = angle;
-		horizontal = get_horizontal(program);
-		vertical = get_vertical(program);
-		if (horizontal > vertical)
-			draw_line(program, step, horizontal);
-		else
-			draw_line(program, step, vertical);
-		angle += 0.17;
-		step--;
-	}
+	program->player->rotation = PI / 2;
+	horizontal = get_horizontal(program);
+	vertical = get_vertical(program);
+	if (horizontal > vertical)
+		draw_line(program, W_WIDTH / 2, horizontal);
+	else
+		draw_line(program, W_WIDTH / 2, vertical);
 }
