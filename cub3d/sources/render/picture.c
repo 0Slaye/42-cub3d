@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:31:52 by mde-lang          #+#    #+#             */
-/*   Updated: 2024/06/18 16:38:08 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:44:07 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 
 void	fc_printer(t_program *program)
 {
-	char	**floor;
 	char	**ceiling;
+	char	**floor;
 	int		y;
 	int		x;
 
