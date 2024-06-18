@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 19:35:57 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 20:26:05 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void	raycasting(t_program *program)
 	holder = program->player->rotation - PI / 4;
 	while (i < rays)
 	{
-		printf("Angle: %f\n", holder);
 		program->player->rayrot = holder;
+		if (program->player->rayrot > PI / 2)
+			program->player->rayrot -= PI / 2;
 		horizontal = get_horizontal(program);
 		vertical = get_vertical(program);
-		// draw_line(program, W_WIDTH - i, vertical);
 		if (horizontal < vertical)
 			draw_line(program, W_WIDTH - i, horizontal);
 		else
