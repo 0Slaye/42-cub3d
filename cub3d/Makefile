@@ -25,6 +25,7 @@ SRCS_FILES =	main.c \
 					render/raycasting.c \
 					render/ray_horizontal.c \
 					render/ray_vertical.c \
+					render/picture.c \
 					get_next_line/get_next_line.c \
 					get_next_line/get_next_line_utils.c
 SRCS = $(addprefix sources/, $(SRCS_FILES))

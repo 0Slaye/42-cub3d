@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 17:23:02 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 18:06:51 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@
 
 typedef struct map
 {
-	t_list	*file;
+	t_list	*file;		// .cub
 	char	*no;
 	char	*so;
 	char	*we;
 	char	*ea;
 	char	*f;
 	char	*c;
-	t_list	*lst_grid;
-	char	**grid;
+	t_list	*lst_grid;	// map
+	char	**grid; 	// map
 }	t_map;
 
 typedef struct player
@@ -104,5 +104,6 @@ void		raycasting(t_program *program);
 double		get_horizontal(t_program *program);
 double		get_vertical(t_program *program);
 int			is_in_map(char **grid, int y, int x);
+void		fc_printer(t_program *program);
 
 #endif

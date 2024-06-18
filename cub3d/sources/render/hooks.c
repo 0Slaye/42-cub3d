@@ -6,29 +6,18 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 16:03:57 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/18 18:07:24 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
 #define MOVE 0.01
 
-void	clear_image(t_program *program)
+bool	check_collision(t_program *p, double prediction_y, double prediction_x)
 {
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < W_HEIGHT)
-	{
-		x = 0;
-		while (x < W_WIDTH)
-		{
-			mlx_put_pixel(program->screen, y, x, 0xFF);
-			x++;
-		}
-		y++;
-	}
+	if (p->map->grid[(int)floor(prediction_y)][(int)floor(prediction_x)] == '1')
+		return (true);
+	return (false);
 }
 
 void	hooks(void *program)
@@ -43,18 +32,14 @@ void	hooks(void *program)
 		mlx_close_window(mlx);
 		fexit(program, EXIT_SUCCESS, DB_END, STDIN_FILENO);
 	}
-	if (mlx_is_key_down(mlx, MLX_KEY_W))
+	if (mlx_is_key_down(p->mlx, MLX_KEY_W) && (check_collision(p, p->player->y -= MOVE, p->player->x) == false))
 		p->player->y -= MOVE;
-	if (mlx_is_key_down(mlx, MLX_KEY_A))
+	if (mlx_is_key_down(p->mlx, MLX_KEY_A) && (check_collision(p, p->player->y, p->player->x -= MOVE) == false))
 		p->player->x -= MOVE;
-	if (mlx_is_key_down(mlx, MLX_KEY_D))
+	if (mlx_is_key_down(p->mlx, MLX_KEY_D) && (check_collision(p, p->player->y, p->player->x += MOVE) == false))
 		p->player->x += MOVE;
-	if (mlx_is_key_down(mlx, MLX_KEY_S))
+	if (mlx_is_key_down(p->mlx, MLX_KEY_S) && (check_collision(p, p->player->y += MOVE, p->player->x) == false))
 		p->player->y += MOVE;
-	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		p->player->rotation += 0.01;
-	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		p->player->rotation -= 0.01;
-	clear_image(program);
+	fc_printer(program);
 	raycasting(program);
 }
