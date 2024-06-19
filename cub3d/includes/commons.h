@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 20:57:25 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 15:50:51 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define SOUTH 'S'
 # define EST 'E'
 # define WEST 'W'
-# define W_WIDTH 512
+# define W_WIDTH 1024
 # define W_HEIGHT 512
 
 #define MOVE 0.02

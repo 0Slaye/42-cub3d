@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:03:39 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 19:47:04 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 15:49:50 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	s_window(t_program *program)
 	mlx = mlx_init(W_WIDTH, W_HEIGHT, "cub3D", true);
 	if (!mlx)
 		fexit(program, EXIT_FAILURE, ER_MLX, STDERR_FILENO);
-	screen = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
+	screen = mlx_new_image(mlx, W_WIDTH / 2, W_HEIGHT);
 	if (!screen)
 		fexit(program, EXIT_FAILURE, ER_MLX, STDERR_FILENO);
-	if (mlx_image_to_window(mlx, screen, 0, 0) == -1)
+	if (mlx_image_to_window(mlx, screen, W_WIDTH / 2, 0) == -1)
 		fexit(program, EXIT_FAILURE, ER_MLX, STDERR_FILENO);
 	program->mlx = mlx;
 	program->screen = screen;
