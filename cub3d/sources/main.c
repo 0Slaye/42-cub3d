@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 15:49:31 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/19 14:38:51 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_map	*m_setup(t_program *program)
 	map->c = NULL;
 	map->lst_grid = NULL;
 	map->grid = NULL;
+	map->sq_x = 0;
+	map->sq_y = 0;
 	return (map);
 }
 

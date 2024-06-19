@@ -4,7 +4,7 @@
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
@@ -26,6 +26,7 @@ SRCS_FILES =	main.c \
 					render/ray_horizontal.c \
 					render/ray_vertical.c \
 					render/picture.c \
+					render/minimap.c \
 					get_next_line/get_next_line.c \
 					get_next_line/get_next_line_utils.c
 SRCS = $(addprefix sources/, $(SRCS_FILES))

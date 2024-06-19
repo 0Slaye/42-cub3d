@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 20:57:58 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 15:56:01 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	hooks(void *program)
 		p->player->rotation -= MOVE;
 	fc_printer(program);
 	raycasting(program);
+	draw_map(program);
 }

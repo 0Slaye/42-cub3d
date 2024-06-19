@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 15:50:51 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 15:56:09 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,23 @@
 #define MOVE 0.02
 
 # define SCELL 1.0
+# define SQUARE 16
 # define PI 3.14159265358979323846
 # define OFFSET 0.000001
 
 typedef struct map
 {
-	t_list	*file;		// .cub
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f;
-	char	*c;
-	t_list	*lst_grid;	// map
-	char	**grid; 	// map
+	t_list		*file;		// .cub
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*f;
+	char		*c;
+	uint32_t	sq_x;
+	uint32_t	sq_y;	
+	t_list		*lst_grid;	// map
+	char		**grid; 	// map
 }	t_map;
 
 typedef struct player
@@ -79,6 +82,7 @@ typedef struct program
 	t_map		*map;
 	mlx_t		*mlx;
 	mlx_image_t	*screen;
+	mlx_image_t	*minimap;
 	char		**argv;
 	int			argc;
 	int			fd;
@@ -107,5 +111,9 @@ double		get_horizontal(t_program *program);
 double		get_vertical(t_program *program);
 int			is_in_map(char **grid, int y, int x);
 void		fc_printer(t_program *program);
+void		draw_map(t_program *p);
 
 #endif
+
+// free mlx
+// check leaks
