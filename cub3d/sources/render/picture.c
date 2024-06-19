@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:31:52 by mde-lang          #+#    #+#             */
-/*   Updated: 2024/06/18 19:05:45 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 15:58:20 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	fc_printer(t_program *program)
 	while (y < W_HEIGHT)
 	{
 		x = 0;
-		while (x++ < W_WIDTH / 2)
+		while (x++ < W_HEIGHT / 2)
 			mlx_put_pixel(program->screen, y, x, ft_pixel(ft_atoi(ceiling[0]), ft_atoi(ceiling[1]), ft_atoi(ceiling[2]), 255));
-		while (x++ < W_WIDTH)
+		while (x++ < W_HEIGHT)
 			mlx_put_pixel(program->screen, y, x, ft_pixel(ft_atoi(floor[0]), ft_atoi(floor[1]), ft_atoi(floor[2]), 255));
 		y++;
 	}
