@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:03:39 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 19:17:25 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:22:01 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	s_window(t_program *program)
 	if (!mlx)
 		fexit(program, EXIT_FAILURE, ER_MLX, STDERR_FILENO);
 	screen = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
-	minimap = mlx_new_image(mlx, W_WIDTH / 4, W_HEIGHT / 4);
+	minimap = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
 	if (!screen || !minimap)
 		fexit(program, EXIT_FAILURE, ER_MLX, STDERR_FILENO);
 	if (mlx_image_to_window(mlx, screen, 0, 0) == -1)

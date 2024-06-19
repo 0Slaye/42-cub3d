@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 19:46:02 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:50:28 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,27 @@
 # define SOUTH 'S'
 # define EST 'E'
 # define WEST 'W'
-# define W_WIDTH 512
+# define W_WIDTH 1024
 # define W_HEIGHT 512
 
 # define SCELL 1.0
-# define SQUARE 32
+# define SQUARE 16
 # define PI 3.14159265358979323846
 # define OFFSET 0.000001
 
 typedef struct map
 {
-	t_list	*file;		// .cub
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f;
-	char	*c;
+	t_list		*file;		// .cub
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*f;
+	char		*c;
 	uint32_t	sq_x;
-	uint32_t	sq_y;
-	t_list	*lst_grid;	// map
-	char	**grid; 	// map
+	uint32_t	sq_y;	
+	t_list		*lst_grid;	// map
+	char		**grid; 	// map
 }	t_map;
 
 typedef struct player
