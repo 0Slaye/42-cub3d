@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 15:56:01 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 18:30:36 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,24 @@
 
 bool	check_collision(t_program *p, double prediction_y, double prediction_x)
 {
-	if (p->map->grid[(int)floor(prediction_y)][(int)floor(prediction_x)] == WALL)
+	int map_y = (int)floor(prediction_y);
+	int map_x = (int)floor(prediction_x);
+	
+	if (p->map->grid[map_y][map_x] == WALL)
 		return (true);
 	return (false);
+}
+
+void move(t_program *p, double angle)
+{
+	double new_y = p->player->y + MOVE * cos(p->player->rotation - angle);
+	double new_x = p->player->x + MOVE * sin(p->player->rotation - angle);
+
+	if (!check_collision(p, new_y, new_x))
+	{
+		p->player->y = new_y;
+		p->player->x = new_x;
+	}
 }
 
 void	hooks(void *program)
@@ -31,14 +46,14 @@ void	hooks(void *program)
 		mlx_close_window(mlx);
 		fexit(program, EXIT_SUCCESS, DB_END, STDIN_FILENO);
 	}
-	if (mlx_is_key_down(p->mlx, MLX_KEY_W) && (check_collision(p, p->player->y - MOVE, p->player->x) == false))
-		p->player->y -= MOVE;
-	if (mlx_is_key_down(p->mlx, MLX_KEY_A) && (check_collision(p, p->player->y, p->player->x - MOVE) == false))
-		p->player->x -= MOVE;
-	if (mlx_is_key_down(p->mlx, MLX_KEY_D) && (check_collision(p, p->player->y, p->player->x + MOVE) == false))
-		p->player->x += MOVE;
-	if (mlx_is_key_down(p->mlx, MLX_KEY_S) && (check_collision(p, p->player->y + MOVE, p->player->x) == false))
-		p->player->y += MOVE;
+	if (mlx_is_key_down(p->mlx, MLX_KEY_W))
+		move(p, 3 * PI / 2);
+	if (mlx_is_key_down(p->mlx, MLX_KEY_A))
+		move(p, PI);
+	if (mlx_is_key_down(p->mlx, MLX_KEY_D))
+		move(p, 0);
+	if (mlx_is_key_down(p->mlx, MLX_KEY_S))
+		move(p, PI / 2);
 	if (mlx_is_key_down(p->mlx, MLX_KEY_LEFT))
 		p->player->rotation += MOVE;
 	if (mlx_is_key_down(p->mlx, MLX_KEY_RIGHT))

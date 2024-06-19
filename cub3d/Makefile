@@ -4,7 +4,7 @@
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g
 
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
