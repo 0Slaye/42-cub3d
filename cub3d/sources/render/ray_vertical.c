@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:12:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 18:05:58 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 19:18:37 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ double	get_vertical(t_program *program)
 		return (99999999);
 	while (is_in_map(program->map->grid, ray.pY, ray.pX) && program->map->grid[(int) ray.pY][(int) ray.pX] != WALL)
 	{
-		if (player->rayrot < PI / 2 && player->rayrot > -PI / 2)
+		if (player->rayrot < PI / 2 || player->rayrot > 3 * PI / 2)
 			vertical_right(player, &ray);
 		else
 			vertical_left(player, &ray);

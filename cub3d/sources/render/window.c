@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:03:39 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 18:29:20 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 18:53:45 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	s_window(t_program *program)
 	program->mlx = mlx;
 	program->screen = screen;
 	program->minimap = minimap;
+	program->player->rotation = PI / 2;
 	mlx_loop_hook(program->mlx, hooks, program);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);

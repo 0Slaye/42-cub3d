@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 18:30:36 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 18:58:59 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@ void move(t_program *p, double angle)
 	}
 }
 
+void	look(t_player *player, int value)
+{
+	player->rotation += ROT * value;
+	if (value == 1 && player->rotation > 2 * PI)
+		player->rotation -= 2 * PI;
+	else if (value == -1 && player->rotation < 0)
+		player->rotation += 2 * PI;
+}
+
 void	hooks(void *program)
 {
 	t_program	*p;
@@ -55,9 +64,9 @@ void	hooks(void *program)
 	if (mlx_is_key_down(p->mlx, MLX_KEY_S))
 		move(p, PI / 2);
 	if (mlx_is_key_down(p->mlx, MLX_KEY_LEFT))
-		p->player->rotation += MOVE;
+		look(p->player, 1);
 	if (mlx_is_key_down(p->mlx, MLX_KEY_RIGHT))
-		p->player->rotation -= MOVE;
+		look(p->player, -1);
 	fc_printer(program);
 	raycasting(program);
 	draw_map(program);

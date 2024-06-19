@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:12:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 18:29:17 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 19:17:22 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ double	get_horizontal(t_program *program)
 		return (99999999);
 	while (is_in_map(program->map->grid, ray.pY, ray.pX) && program->map->grid[(int) ray.pY][(int) ray.pX] != WALL)
 	{
-		if (player->rayrot > 0 && player->rayrot < PI)
+		if (player->rayrot < PI)
 			horizontal_upper(player, &ray);
 		else
 			horizontal_lower(player, &ray);

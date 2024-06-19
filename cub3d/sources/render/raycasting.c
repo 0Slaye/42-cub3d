@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 18:29:15 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 19:11:24 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,17 @@ void	raycasting(t_program *program)
 	double	horizontal;
 	double	vertical;
 	double	holder;
-	
-	if (!program->player->rotation)
-		program->player->rotation = PI / 2;
+
 	i = 1;
 	rays = W_WIDTH / 2;
-	step = PI / 2 / rays;
-	holder = program->player->rotation - PI / 4;
+	step = PI / 3 / rays;
+	holder = program->player->rotation - (PI / 3 / 2);
 	while (i <= rays)
 	{
+		if (holder < 0)
+			holder += (2 * PI);
+		if (holder > (2 * PI))
+			holder -= (2 * PI);
 		program->player->rayrot = holder;
 		horizontal = get_horizontal(program);
 		vertical = get_vertical(program);
