@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:12:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/18 21:39:00 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/19 13:22:18 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	horizontal_lower(t_player *player, t_ray *ray)
 {
 	if (ray->dist == 0)
 	{
-		ray->cY = -(player->y - floor(player->y) + OFFSET);
+		ray->cY = -(ceil(player->y) - player->y + OFFSET);
 		ray->cX = ray->cY / tan(player->rayrot);
 		ray->dist += sqrt(ray->cY * ray->cY + ray->cX * ray->cX);
 		ray->pY = floor(player->y - ray->cY);
@@ -65,7 +65,7 @@ double	get_horizontal(t_program *program)
 		return (99999999);
 	while (is_in_map(program->map->grid, ray.pY, ray.pX) && program->map->grid[(int) ray.pY][(int) ray.pX] != WALL)
 	{
-		if (player->rotation > 0 && player->rotation < PI)
+		if (player->rayrot > 0 && player->rayrot < PI)
 			horizontal_upper(player, &ray);
 		else
 			horizontal_lower(player, &ray);
