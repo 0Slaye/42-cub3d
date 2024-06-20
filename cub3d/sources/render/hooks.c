@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 15:56:01 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/20 03:59:04 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ void	hooks(void *program)
 	fc_printer(program);
 	raycasting(program);
 	draw_map(program);
+	draw_player(program);
 }

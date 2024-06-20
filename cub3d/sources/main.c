@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 14:38:51 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/20 03:51:07 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_program	*p_setup(int argc, char **argv)
 	program->player = NULL;
 	program->mlx = NULL;
 	program->screen = NULL;
+	program->minimap = NULL;
+	program->player_img = NULL;
 	return (program);
 }
 
@@ -57,8 +59,8 @@ t_map	*m_setup(t_program *program)
 	map->c = NULL;
 	map->lst_grid = NULL;
 	map->grid = NULL;
-	map->sq_x = 0;
-	map->sq_y = 0;
+	map->ratio_x = 1.0;
+	map->ratio_y = 1.0;
 	return (map);
 }
 

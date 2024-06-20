@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:48:40 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 14:26:15 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/20 04:05:25 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
+
+void	player_init(t_program *p)
+{
+	if (p->player_img)
+		mlx_delete_image(p->mlx, p->player_img);
+	p->player_img = mlx_new_image(p->mlx, W_WIDTH / 2, W_HEIGHT);
+	if (mlx_image_to_window(p->mlx, p->player_img, 0, 0) == -1)
+		fexit(p, EXIT_FAILURE, ER_MLX, STDERR_FILENO);
+}
+
+void	draw_player(t_program *p)
+{
+	int	x;
+	int	y;
+
+	player_init(p);
+	y = p->player->y * SQUARE * p->map->ratio_y;
+	while (y < p->player->y * SQUARE * p->map->ratio_y + SQUARE / 2 * p->map->ratio_y)
+	{
+		x = p->player->x * SQUARE * p->map->ratio_x;
+		while (x < p->player->x * SQUARE * p->map->ratio_x + SQUARE / 2 * p->map->ratio_y)
+		{
+			mlx_put_pixel(p->player_img, x, y, 0xBFF23DFF);
+			x++;
+		}
+		y++;
+	}
+	mlx_put_pixel(p->player_img, p->player->x, p->player->y, 0xBFF23DFF);
+}
 
 t_player	*s_player(t_program *program)
 {
