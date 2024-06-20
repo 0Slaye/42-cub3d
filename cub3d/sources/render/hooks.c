@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 18:58:59 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/20 13:38:17 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 
 bool	check_collision(t_program *p, double prediction_y, double prediction_x)
 {
-	int map_y = (int)floor(prediction_y);
-	int map_x = (int)floor(prediction_x);
-	
+	int	map_y;
+	int	map_x;
+
+	map_y = (int)floor(prediction_y);
+	map_x = (int)floor(prediction_x);
 	if (p->map->grid[map_y][map_x] == WALL)
 		return (true);
 	return (false);
 }
 
-void move(t_program *p, double angle)
+void	move(t_program *p, double angle)
 {
-	double new_y = p->player->y + MOVE * cos(p->player->rotation - angle);
-	double new_x = p->player->x + MOVE * sin(p->player->rotation - angle);
+	double	new_y;
+	double	new_x;
 
+	new_y = p->player->y + MOVE * cos(p->player->rotation - angle);
+	new_x = p->player->x + MOVE * sin(p->player->rotation - angle);
 	if (!check_collision(p, new_y, new_x))
 	{
 		p->player->y = new_y;

@@ -6,11 +6,25 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:48:40 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 14:26:15 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/20 13:33:54 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
+
+void	m_player(t_player *player, int y, int x, char c)
+{
+	player->y = y + 0.5;
+	player->x = x + 0.5;
+	if (c == NORTH)
+		player->rotation = PI / 2;
+	else if (c == SOUTH)
+		player->rotation = 3 * PI / 2;
+	else if (c == WEST)
+		player->rotation = PI;
+	else if (c == EST)
+		player->rotation = 0;
+}
 
 t_player	*s_player(t_program *program)
 {
@@ -30,12 +44,7 @@ t_player	*s_player(t_program *program)
 		{
 			c = program->map->grid[y][x];
 			if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
-			{
-				player->spawn = c;
-				player->y = y + 0.5;
-				player->x = x + 0.5;
-				return (player);
-			}
+				return (m_player(player, y, x, c), player);
 		}
 	}
 	return (player);

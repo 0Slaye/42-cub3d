@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:53:21 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 17:13:13 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/20 13:35:20 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	selected_cell_check(char value)
 {
-	if (value == EMPTY || value == NORD || value == SOUTH)
+	if (value == EMPTY || value == NORTH || value == SOUTH)
 		return (1);
 	if (value == EST || value == WEST)
 		return (1);
@@ -25,7 +25,7 @@ int	cell_if_check(char value)
 {
 	if (value != WALL && value != EMPTY)
 	{
-		if (value != NORD && value != SOUTH && value != EST && value != WEST)
+		if (value != NORTH && value != SOUTH && value != EST && value != WEST)
 			return (0);
 	}
 	return (1);

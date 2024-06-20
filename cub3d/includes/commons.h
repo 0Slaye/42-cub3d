@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 18:59:36 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/20 13:48:37 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@
 
 # define EMPTY '0'
 # define WALL '1'
-# define NORD 'N'
+# define NORTH 'N'
 # define SOUTH 'S'
 # define EST 'E'
 # define WEST 'W'
 # define W_WIDTH 1024
 # define W_HEIGHT 512
 
-#define MOVE 0.02
-#define ROT 0.03
+# define MOVE 0.02
+# define ROT 0.03
 
 # define SCELL 1.0
 # define SQUARE 8
@@ -53,27 +53,34 @@ typedef struct map
 	char		*ea;
 	char		*f;
 	char		*c;
-	uint32_t	sq_x;
-	uint32_t	sq_y;	
 	t_list		*lst_grid;	// map
-	char		**grid; 	// map
+	char		**grid;		// map
 }	t_map;
 
 typedef struct player
 {
-	int		spawn;
 	double	x;
 	double	y;
 	double	rotation;
 	double	rayrot;
 }	t_player;
 
+typedef struct raycaster
+{
+	int		rays;
+	double	i;
+	double	step;
+	double	horizontal;
+	double	vertical;
+	double	holder;
+}	t_raycaster;
+
 typedef struct ray
 {
-	double	cX;
-	double	cY;
-	double	pX;
-	double	pY;
+	double	cx;
+	double	cy;
+	double	px;
+	double	py;
 	double	dist;
 }	t_ray;
 

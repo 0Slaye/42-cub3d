@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/20 11:36:24 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/20 13:49:51 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,26 @@ void	draw_line(t_program *program, int step, double distance)
 
 void	raycasting(t_program *program)
 {
-	double	i;
-	int		rays;
-	double	step;
-	double	horizontal;
-	double	vertical;
-	double	holder;
+	t_raycaster	rc;
 
-	i = 1;
-	rays = W_WIDTH / 2;
-	step = PI / 3 / rays;
-	holder = program->player->rotation - (PI / 3 / 2);
-	while (i <= rays)
+	rc.i = 1;
+	rc.rays = W_WIDTH / 2;
+	rc.step = PI / 3 / rc.rays;
+	rc.holder = program->player->rotation - (PI / 3 / 2);
+	while (rc.i <= rc.rays)
 	{
-		if (holder < 0)
-			holder += (2 * PI);
-		if (holder > (2 * PI))
-			holder -= (2 * PI);
-		program->player->rayrot = holder;
-		horizontal = get_horizontal(program);
-		vertical = get_vertical(program);
-		if (horizontal < vertical)
-			draw_line(program, W_WIDTH - i, horizontal);
+		if (rc.holder < 0)
+			rc.holder += (2 * PI);
+		if (rc.holder > (2 * PI))
+			rc.holder -= (2 * PI);
+		program->player->rayrot = rc.holder;
+		rc.horizontal = get_horizontal(program);
+		rc.vertical = get_vertical(program);
+		if (rc.horizontal < rc.vertical)
+			draw_line(program, W_WIDTH - rc.i, rc.horizontal);
 		else
-			draw_line(program, W_WIDTH - i, vertical);
-		i++;
-		holder += step;
+			draw_line(program, W_WIDTH - rc.i, rc.vertical);
+		rc.i++;
+		rc.holder += rc.step;
 	}
 }

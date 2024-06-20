@@ -5,7 +5,8 @@
         "libft.h": "c",
         "stdio.h": "c",
         "cmath": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "random": "c"
     },
     "cmake.ignoreCMakeListsMissing": true
 }
