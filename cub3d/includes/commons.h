@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/20 03:57:09 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:19:39 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 #define MOVE 0.02
 
 # define SCELL 1.0
-# define SQUARE 16
+# define SQUARE 8
 # define PI 3.14159265358979323846
 # define OFFSET 0.000001
 

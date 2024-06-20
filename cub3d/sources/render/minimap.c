@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:52:49 by mde-lang          #+#    #+#             */
-/*   Updated: 2024/06/20 03:41:48 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:19:32 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	minimap_resize(t_map *map)
 {
 	while ((ft_lstsize(map->lst_grid) * SQUARE) * map->ratio_y > (W_HEIGHT))
-		map->ratio_y -= 0.000001;
+		map->ratio_y -= 0.001;
 	while ((max_len_map(map->grid) * SQUARE) * map->ratio_x > (W_WIDTH / 2))
-		map->ratio_x -= 0.000001;
+		map->ratio_x -= 0.001;
 	while ((ft_lstsize(map->lst_grid) * SQUARE) * map->ratio_y < (W_HEIGHT))
-		map->ratio_y += 0.000001;
+		map->ratio_y += 0.001;
 	while ((max_len_map(map->grid) * SQUARE) * map->ratio_x < (W_WIDTH / 2))
-		map->ratio_x += 0.000001;
+		map->ratio_x += 0.001;
 }
 
 int	max_len_map(char **grid)
@@ -45,9 +45,9 @@ int	max_len_map(char **grid)
 
 void	draw_square(t_program *p, int x, int y, uint32_t color) 
 {
-	int	yy;
-	int	xx;
-	int	holder;
+	double	yy;
+	double	xx;
+	int		holder;
 
 	yy = y + SQUARE * p->map->ratio_y;
 	xx = x + SQUARE * p->map->ratio_x;
@@ -56,7 +56,10 @@ void	draw_square(t_program *p, int x, int y, uint32_t color)
 	{
 		x = holder;
 		while (x < xx)
-			mlx_put_pixel(p->minimap, x++, y, color);
+		{
+			mlx_put_pixel(p->minimap, x, y, color);
+			x++;
+		}
 		y++;
 	}
 }
