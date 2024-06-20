@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/19 19:11:24 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/20 11:36:24 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,17 @@ int	is_in_map(char **grid, int y, int x)
 
 void	draw_line(t_program *program, int step, double distance)
 {
-	int	i;
-	int	length;
-	int	holder;
+	int		i;
+	int		length;
+	int		holder;
+	double	fisheye;
 
+	fisheye = program->player->rotation - program->player->rayrot;
+	if (fisheye < 0)
+		fisheye += (2 * PI);
+	if (fisheye > (2 * PI))
+		fisheye -= (2 * PI);
+	distance *= cos(fisheye);
 	length = W_HEIGHT / distance;
 	if (length > W_HEIGHT)
 		length = W_HEIGHT;
