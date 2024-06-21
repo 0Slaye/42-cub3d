@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/21 15:14:48 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/21 16:19:41 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ t_map	*m_setup(t_program *program)
 
 void	setup_textures(t_program *program, t_map *map)
 {
-	program->tbuffer[0] = (int *) mlx_load_png(map->no);
-	if (!program->tbuffer[0])
+	program->t_no = mlx_load_png(map->no);
+	if (!program->t_no)
 		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
-	program->tbuffer[1] = (int *) mlx_load_png(map->so);
-	if (!program->tbuffer[0])
+	program->t_so = mlx_load_png(map->so);
+	if (!program->t_so)
 		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
-	program->tbuffer[2] = (int *) mlx_load_png(map->we);
-	if (!program->tbuffer[2])
+	program->t_we = mlx_load_png(map->we);
+	if (!program->t_we)
 		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
-	program->tbuffer[3] = (int *) mlx_load_png(map->ea);
-	if (!program->tbuffer[3])
+	program->t_ea = mlx_load_png(map->ea);
+	if (!program->t_ea)
 		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
 }
 

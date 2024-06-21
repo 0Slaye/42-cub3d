@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/21 15:09:06 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/21 16:37:18 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ typedef struct program
 	char			**argv;
 	int				argc;
 	int				fd;
-	int				*tbuffer[4];
+	mlx_texture_t	*t_no;
+	mlx_texture_t	*t_so;
+	mlx_texture_t	*t_we;
+	mlx_texture_t	*t_ea;
 }	t_program;
 
 // Main
@@ -122,6 +125,7 @@ double		get_vertical(t_program *program);
 int			is_in_map(char **grid, int y, int x);
 void		fc_printer(t_program *program);
 void		draw_map(t_program *p);
+int32_t		ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
 
 #endif
 
