@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 17:12:48 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/20 13:45:39 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/21 14:58:15 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ double	get_horizontal(t_program *program)
 		else
 			horizontal_lower(player, &ray);
 	}
+	player->rayoffset = ceil(ray.cx) - ray.cx;
 	return (ray.dist);
 }

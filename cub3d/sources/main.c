@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/20 13:28:00 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/21 15:14:48 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,22 @@ t_map	*m_setup(t_program *program)
 	return (map);
 }
 
+void	setup_textures(t_program *program, t_map *map)
+{
+	program->tbuffer[0] = (int *) mlx_load_png(map->no);
+	if (!program->tbuffer[0])
+		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
+	program->tbuffer[1] = (int *) mlx_load_png(map->so);
+	if (!program->tbuffer[0])
+		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
+	program->tbuffer[2] = (int *) mlx_load_png(map->we);
+	if (!program->tbuffer[2])
+		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
+	program->tbuffer[3] = (int *) mlx_load_png(map->ea);
+	if (!program->tbuffer[3])
+		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
+}
+
 int	main(int argc, char **argv)
 {
 	t_program	*program;
@@ -69,6 +85,7 @@ int	main(int argc, char **argv)
 	p_verify(program);
 	parser(program);
 	program->player = s_player(program);
+	setup_textures(program, program->map);
 	s_window(program);
 	fexit(program, EXIT_SUCCESS, DB_END, STDIN_FILENO);
 }

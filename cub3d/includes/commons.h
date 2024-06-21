@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/20 13:48:37 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/21 15:09:06 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct player
 	double	y;
 	double	rotation;
 	double	rayrot;
+	double	rayoffset;
 }	t_player;
 
 typedef struct raycaster
@@ -86,14 +87,15 @@ typedef struct ray
 
 typedef struct program
 {
-	t_player	*player;
-	t_map		*map;
-	mlx_t		*mlx;
-	mlx_image_t	*screen;
-	mlx_image_t	*minimap;
-	char		**argv;
-	int			argc;
-	int			fd;
+	t_player		*player;
+	t_map			*map;
+	mlx_t			*mlx;
+	mlx_image_t		*screen;
+	mlx_image_t		*minimap;
+	char			**argv;
+	int				argc;
+	int				fd;
+	int				*tbuffer[4];
 }	t_program;
 
 // Main

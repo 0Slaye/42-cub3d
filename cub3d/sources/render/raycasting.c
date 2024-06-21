@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/20 13:49:51 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/21 15:58:30 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	is_in_map(char **grid, int y, int x)
 	return (1);
 }
 
-void	draw_line(t_program *program, int step, double distance)
+void	draw_line(t_program *program, int step, double distance, int type)
 {
 	int		i;
 	int		length;
@@ -45,7 +45,13 @@ void	draw_line(t_program *program, int step, double distance)
 	i = (W_HEIGHT / 2) - (length / 2);
 	holder = i + length;
 	while (i < holder)
-		mlx_put_pixel(program->screen, step, i++, 0xFFFFFFFF);
+	{
+		if (type == 0)
+			mlx_put_pixel(program->screen, step, i, 0xFFFFFFFF);
+		else
+			mlx_put_pixel(program->screen, step, i, 0xFFFFFF99);
+		i++;
+	}
 }
 
 void	raycasting(t_program *program)
@@ -66,9 +72,9 @@ void	raycasting(t_program *program)
 		rc.horizontal = get_horizontal(program);
 		rc.vertical = get_vertical(program);
 		if (rc.horizontal < rc.vertical)
-			draw_line(program, W_WIDTH - rc.i, rc.horizontal);
+			draw_line(program, W_WIDTH - rc.i, rc.horizontal, 0);
 		else
-			draw_line(program, W_WIDTH - rc.i, rc.vertical);
+			draw_line(program, W_WIDTH - rc.i, rc.vertical, 1);
 		rc.i++;
 		rc.holder += rc.step;
 	}

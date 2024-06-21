@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:48:40 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/20 13:33:54 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/21 15:15:08 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	m_player(t_player *player, int y, int x, char c)
 		player->rotation = PI;
 	else if (c == EST)
 		player->rotation = 0;
+	player->rayoffset = 0;
 }
 
 t_player	*s_player(t_program *program)
