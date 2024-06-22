@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:48:40 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/20 15:30:09 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:47:29 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	draw_player(t_program *p)
 		y++;
 	}
 	mlx_put_pixel(p->player_img, p->player->x, p->player->y, 0xBFF23DFF);
+	draw_rays(p);
 }
 
 t_player	*s_player(t_program *program)
