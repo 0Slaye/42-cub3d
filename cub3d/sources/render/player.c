@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:48:40 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/22 16:47:29 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:57:42 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,21 @@ void	draw_player(t_program *p)
 		y++;
 	}
 	mlx_put_pixel(p->player_img, p->player->x, p->player->y, 0xBFF23DFF);
-	draw_rays(p);
+}
+
+void	m_player(t_player *player, int y, int x, char c)
+{
+	player->y = y + 0.5;
+	player->x = x + 0.5;
+	if (c == NORTH)
+		player->rotation = PI / 2;
+	else if (c == SOUTH)
+		player->rotation = 3 * PI / 2;
+	else if (c == WEST)
+		player->rotation = PI;
+	else if (c == EST)
+		player->rotation = 0;
+	player->rayoffset = 0;
 }
 
 t_player	*s_player(t_program *program)
@@ -60,12 +74,7 @@ t_player	*s_player(t_program *program)
 		{
 			c = program->map->grid[y][x];
 			if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
-			{
-				player->spawn = c;
-				player->y = y + 0.5;
-				player->x = x + 0.5;
-				return (player);
-			}
+				return (m_player(player, y, x, c), player);
 		}
 	}
 	return (player);

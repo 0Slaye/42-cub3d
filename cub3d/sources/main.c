@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/20 15:32:30 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:53:06 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,22 @@ t_map	*m_setup(t_program *program)
 	return (map);
 }
 
+void	setup_textures(t_program *program, t_map *map)
+{
+	program->t_no = mlx_load_png(map->no);
+	if (!program->t_no)
+		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
+	program->t_so = mlx_load_png(map->so);
+	if (!program->t_so)
+		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
+	program->t_we = mlx_load_png(map->we);
+	if (!program->t_we)
+		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
+	program->t_ea = mlx_load_png(map->ea);
+	if (!program->t_ea)
+		fexit(program, EXIT_FAILURE, ER_OPEN, STDERR_FILENO);
+}
+
 int	main(int argc, char **argv)
 {
 	t_program	*program;
@@ -73,6 +89,7 @@ int	main(int argc, char **argv)
 	p_verify(program);
 	parser(program);
 	program->player = s_player(program);
+	setup_textures(program, program->map);
 	s_window(program);
 	fexit(program, EXIT_SUCCESS, DB_END, STDIN_FILENO);
 }

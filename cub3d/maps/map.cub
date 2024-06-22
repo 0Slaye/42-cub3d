@@ -1,7 +1,7 @@
-NO      ./path_to_the_north_texture1
-SO 
-WE ./path_to_the_west_texture2
-EA ./path_to_the_east_texture3
+NO ./textures/test.png
+SO ./textures/texture_BR.png
+WE ./textures/texture_BR.png
+EA ./textures/texture_BR.png
 
 C 0,0,255
 F 100,100,100

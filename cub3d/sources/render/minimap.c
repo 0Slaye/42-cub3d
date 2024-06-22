@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:52:49 by mde-lang          #+#    #+#             */
-/*   Updated: 2024/06/22 16:19:08 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:56:29 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ void	draw_square(t_program *p, int x, int y, uint32_t color)
 	{
 		x = holder;
 		while (x < xx)
-		{
-			mlx_put_pixel(p->minimap, x, y, color);
-			x++;
-		}
+			mlx_put_pixel(p->minimap, x++, y, color);
 		y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/22 16:19:00 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:51:20 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@
 
 # define EMPTY '0'
 # define WALL '1'
-# define NORD 'N'
+# define NORTH 'N'
 # define SOUTH 'S'
 # define EST 'E'
 # define WEST 'W'
 # define W_WIDTH 1024
 # define W_HEIGHT 512
 
-#define MOVE 0.02
+# define MOVE 0.02
+# define ROT 0.03
 
 # define SCELL 1.0
 # define SQUARE 8
@@ -55,38 +56,52 @@ typedef struct map
 	double		ratio_x;
 	double		ratio_y;
 	t_list		*lst_grid;	// map
-	char		**grid; 	// map
+	char		**grid;		// map
 }	t_map;
 
 typedef struct player
 {
-	int		spawn;
 	double	x;
 	double	y;
 	double	rotation;
 	double	rayrot;
+	double	rayoffset;
 }	t_player;
+
+typedef struct raycaster
+{
+	int		rays;
+	double	i;
+	double	step;
+	double	horizontal;
+	double	vertical;
+	double	holder;
+}	t_raycaster;
 
 typedef struct ray
 {
-	double	cX;
-	double	cY;
-	double	pX;
-	double	pY;
+	double	cx;
+	double	cy;
+	double	px;
+	double	py;
 	double	dist;
 }	t_ray;
 
 typedef struct program
 {
-	t_player	*player;
-	t_map		*map;
-	mlx_t		*mlx;
-	mlx_image_t	*screen;
-	mlx_image_t	*minimap;
+	t_player		*player;
+	t_map			*map;
+	mlx_t			*mlx;
+	mlx_image_t		*screen;
+	mlx_image_t		*minimap;
 	mlx_image_t	*player_img;
-	char		**argv;
-	int			argc;
-	int			fd;
+	char			**argv;
+	int				argc;
+	int				fd;
+	mlx_texture_t	*t_no;
+	mlx_texture_t	*t_so;
+	mlx_texture_t	*t_we;
+	mlx_texture_t	*t_ea;
 }	t_program;
 
 // Main
@@ -115,6 +130,7 @@ void		fc_printer(t_program *program);
 void		draw_map(t_program *p);
 int			max_len_map(char **grid);
 void		draw_player(t_program *p);
+int32_t		ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
 
 #endif
 

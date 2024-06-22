@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:04:58 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/12 17:13:04 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/20 13:45:06 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ void	check_lst_grid_chars(t_program *program, t_list *lst_grid)
 		while (((char *) holder->content)[++i] != '\0')
 		{
 			c = ((char *) holder->content)[i];
-			if (c != EMPTY && c != WALL && c != NORD && c != SOUTH && c != EST && c != WEST && c != ' ')
+			if (c != EMPTY && c != WALL && c != NORTH && c != SOUTH \
+			&& c != EST && c != WEST && c != ' ')
 				fexit(program, EXIT_FAILURE, ER_MAP, STDERR_FILENO);
-			else if (c == NORD || c == SOUTH || c == EST || c == WEST)
+			else if (c == NORTH || c == SOUTH || c == EST || c == WEST)
 				spawn++;
 		}
 		holder = holder->next;
