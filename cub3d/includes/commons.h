@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/22 16:51:20 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:56:56 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define ROT 0.03
 
 # define SCELL 1.0
-# define SQUARE 8
+# define SQUARE 64
 # define PI 3.14159265358979323846
 # define OFFSET 0.000001
 
@@ -94,7 +94,7 @@ typedef struct program
 	mlx_t			*mlx;
 	mlx_image_t		*screen;
 	mlx_image_t		*minimap;
-	mlx_image_t	*player_img;
+	mlx_image_t		*player_img;
 	char			**argv;
 	int				argc;
 	int				fd;
