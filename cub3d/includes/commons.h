@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/24 15:31:59 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/24 15:59:22 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ typedef struct line
 	double	distance;
 	double	p1;
 	double	p2;
-	
 }	t_line;
 
 typedef struct program
@@ -128,7 +127,8 @@ int				is_map_chars(char *line);
 void			set_map_grid(t_program *program);
 void			remove_nl(char *value);
 void			map_checker(t_program *program);
-void			check_cell_border(t_program *program, char **grid, int y, int x);
+void			check_cell_border(t_program *program, \
+char **grid, int y, int x);
 
 // Render
 void			s_window(t_program *program);
@@ -145,6 +145,3 @@ unsigned int	get_pixel_color(uint8_t *pixels, int width, int x, int y);
 double			a_normalize(double angle);
 
 #endif
-
-// free mlx
-// check leaks

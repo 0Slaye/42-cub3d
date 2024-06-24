@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/24 15:49:39 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/24 15:58:37 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	loop_line(t_program *program, t_line line)
 			line.j * tex->width / line.l));
 		else if (line.type == 0 && program->player->rayrot > PI)
 			mlx_put_pixel(program->screen, line.step, line.i, \
-			get_pixel_color(tex->pixels, tex->width, line.p1 * tex->width, \
-			line.j * tex->width / line.l));
+			get_pixel_color(tex->pixels, tex->width, \
+			fabs(line.p1 - 1.0) * tex->width, line.j * tex->width / line.l));
 		else if (line.type != 0 && (program->player->rayrot < PI / 2 \
 		|| program->player->rayrot > 3 * PI / 2))
 			mlx_put_pixel(program->screen, line.step, line.i, \
@@ -61,8 +61,8 @@ void	loop_line(t_program *program, t_line line)
 			line.j * tex->width / line.l));
 		else
 			mlx_put_pixel(program->screen, line.step, line.i, \
-			get_pixel_color(tex->pixels, tex->width, line.p2 * tex->width, \
-			line.j * tex->width / line.l));
+			get_pixel_color(tex->pixels, tex->width, \
+			fabs(line.p2 - 1) * tex->width, line.j * tex->width / line.l));
 		line.i++;
 		line.j++;
 	}
