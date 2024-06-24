@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/21 17:52:25 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/24 14:38:07 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,20 @@ void	draw_line(t_program *program, int step, double distance, int type)
 	int	a = 0;
 	holder = i + length;
 	double test = (program->player->x + cos(program->player->rayrot) * distance / cos(fisheye));
+	double test2 = (program->player->y - sin(program->player->rayrot) * distance / cos(fisheye));
 	test -= floor(test);
+	test2 -= floor(test2);
 	while (i < holder)
 	{
-		if (type == 0)
-			mlx_put_pixel(program->screen, step, i, get_pixel_color(program->t_so->pixels, 32, test * 32, a * 32 / length));
-		else
-			mlx_put_pixel(program->screen, step, i, 0xFFFFFFFF);
+		if (type == 0 && program->player->rayrot < PI)
+			mlx_put_pixel(program->screen, step, i, get_pixel_color(program->t_no->pixels, program->t_no->width, test * program->t_no->width, a * program->t_no->width / length));
+		else if (type == 0 && program->player->rayrot > PI)
+			mlx_put_pixel(program->screen, step, i, get_pixel_color(program->t_so->pixels, program->t_so->width, test * program->t_so->width, a * program->t_so->width / length));
+
+		else if (type != 0 && (program->player->rayrot < PI / 2 || program->player->rayrot > 3 * PI / 2))
+			mlx_put_pixel(program->screen, step, i, get_pixel_color(program->t_we->pixels, program->t_we->width, test2 * program->t_we->width, a * program->t_we->width / length));
+		else if (type != 0 && !(program->player->rayrot < PI / 2 || program->player->rayrot > 3 * PI / 2))
+			mlx_put_pixel(program->screen, step, i, get_pixel_color(program->t_ea->pixels, program->t_ea->width, test2 * program->t_ea->width, a * program->t_ea->width / length));
 		i++;
 		a++;
 	}
