@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:52:49 by mde-lang          #+#    #+#             */
-/*   Updated: 2024/06/24 14:57:03 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:46:27 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	max_len_map(char **grid)
 	return (len);
 }
 
-void	draw_square(t_program *p, int x, int y, uint32_t color) 
+void	draw_square(t_program *p, int x, int y, uint32_t color)
 {
 	double	yy;
 	double	xx;
@@ -61,22 +61,24 @@ void	draw_square(t_program *p, int x, int y, uint32_t color)
 	}
 }
 
-void draw_map(t_program *p)
+void	draw_map(t_program *p)
 {
 	int	x;
 	int	y;
 
 	y = 0;
 	minimap_resize(p->map);
-	while (y < ft_lstsize(p->map->lst_grid)) // y axis
+	while (y < ft_lstsize(p->map->lst_grid))
 	{
 		x = 0;
 		while (x < (int)ft_strlen(p->map->grid[y]))
 		{
 			if (p->map->grid[y][x] == '1')
-				draw_square(p, x * SQUARE * p->map->ratio_x, y * SQUARE * p->map->ratio_y, 0xFFFFFFFF);
+				draw_square(p, x * SQUARE * p->map->ratio_x, y
+					* SQUARE * p->map->ratio_y, 0xFFFFFFFF);
 			else if (p->map->grid[y][x] != '1' && p->map->grid[y][x] != ' ')
-				draw_square(p, x * SQUARE * p->map->ratio_x, y * SQUARE * p->map->ratio_y, 0x000000FF);
+				draw_square(p, x * SQUARE * p->map->ratio_x, y
+					* SQUARE * p->map->ratio_y, 0x000000FF);
 			x++;
 		}
 		y++;

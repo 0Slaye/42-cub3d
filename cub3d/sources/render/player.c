@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 14:48:40 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/22 16:57:42 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:48:23 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ void	draw_player(t_program *p)
 
 	player_init(p);
 	y = p->player->y * SQUARE * p->map->ratio_y;
-	while (y < p->player->y * SQUARE * p->map->ratio_y + SQUARE / 2 * p->map->ratio_y)
+	while (y < p->player->y * SQUARE * p->map->ratio_y
+		+ SQUARE / 2 * p->map->ratio_y)
 	{
 		x = p->player->x * SQUARE * p->map->ratio_x;
-		while (x < p->player->x * SQUARE * p->map->ratio_x + SQUARE / 2 * p->map->ratio_y)
+		while (x < p->player->x * SQUARE * p->map->ratio_x
+			+ SQUARE / 2 * p->map->ratio_y)
 		{
 			mlx_put_pixel(p->player_img, x, y, 0xBFF23DFF);
 			x++;

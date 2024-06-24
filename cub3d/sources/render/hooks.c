@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/22 16:55:28 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:12:04 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	look(t_player *player, int value)
 
 void	is_key_down(t_program *p)
 {
-	if (mlx_is_key_down(p->mlx, MLX_KEY_W) && (check_collision(p, p->player->y - MOVE, p->player->x) == false))
-		p->player->y -= MOVE;
-	if (mlx_is_key_down(p->mlx, MLX_KEY_A) && (check_collision(p, p->player->y, p->player->x - MOVE) == false))
-		p->player->x -= MOVE;
-	if (mlx_is_key_down(p->mlx, MLX_KEY_D) && (check_collision(p, p->player->y, p->player->x + MOVE) == false))
-		p->player->x += MOVE;
-	if (mlx_is_key_down(p->mlx, MLX_KEY_S) && (check_collision(p, p->player->y + MOVE, p->player->x) == false))
-		p->player->y += MOVE;
+	if (mlx_is_key_down(p->mlx, MLX_KEY_W))
+		move(p, 3 * PI / 2);
+	if (mlx_is_key_down(p->mlx, MLX_KEY_A))
+		move(p, PI);
+	if (mlx_is_key_down(p->mlx, MLX_KEY_D))
+		move(p, 0);
+	if (mlx_is_key_down(p->mlx, MLX_KEY_S))
+		move(p, PI / 2);
 	if (mlx_is_key_down(p->mlx, MLX_KEY_LEFT))
 		look(p->player, 1);
 	if (mlx_is_key_down(p->mlx, MLX_KEY_RIGHT))
