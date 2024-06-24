@@ -23,6 +23,7 @@ SRCS_FILES =	main.c \
 					render/hooks.c \
 					render/player.c \
 					render/raycasting.c \
+					render/raycasting_utils.c \
 					render/ray_horizontal.c \
 					render/ray_vertical.c \
 					render/picture.c \

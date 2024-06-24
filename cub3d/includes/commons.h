@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/21 16:37:18 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/24 15:31:59 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,21 @@ typedef struct ray
 	double	dist;
 }	t_ray;
 
+typedef struct line
+{
+	int		i;
+	int		j;
+	int		max;
+	int		step;
+	int		type;
+	int		l;
+	double	fisheye;
+	double	distance;
+	double	p1;
+	double	p2;
+	
+}	t_line;
+
 typedef struct program
 {
 	t_player		*player;
@@ -102,30 +117,32 @@ typedef struct program
 }	t_program;
 
 // Main
-void		fexit(t_program *program, int code, char *value, int fd);
-void		free_split(char **split);
+void			fexit(t_program *program, int code, char *value, int fd);
+void			free_split(char **split);
 
 // Parser
-void		parser(t_program *program);
-void		set_map_vars_loop(t_program *program, char *value);
-int			set_map_grid_loop(char *line);
-int			is_map_chars(char *line);
-void		set_map_grid(t_program *program);
-void		remove_nl(char *value);
-void		map_checker(t_program *program);
-void		check_cell_border(t_program *program, char **grid, int y, int x);
+void			parser(t_program *program);
+void			set_map_vars_loop(t_program *program, char *value);
+int				set_map_grid_loop(char *line);
+int				is_map_chars(char *line);
+void			set_map_grid(t_program *program);
+void			remove_nl(char *value);
+void			map_checker(t_program *program);
+void			check_cell_border(t_program *program, char **grid, int y, int x);
 
 // Render
-void		s_window(t_program *program);
-void		hooks(void *program);
-t_player	*s_player(t_program *program);
-void		raycasting(t_program *program);
-double		get_horizontal(t_program *program);
-double		get_vertical(t_program *program);
-int			is_in_map(char **grid, int y, int x);
-void		fc_printer(t_program *program);
-void		draw_map(t_program *p);
-int32_t		ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
+void			s_window(t_program *program);
+void			hooks(void *program);
+t_player		*s_player(t_program *program);
+void			raycasting(t_program *program);
+double			get_horizontal(t_program *program);
+double			get_vertical(t_program *program);
+int				is_in_map(char **grid, int y, int x);
+void			fc_printer(t_program *program);
+void			draw_map(t_program *p);
+int32_t			ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
+unsigned int	get_pixel_color(uint8_t *pixels, int width, int x, int y);
+double			a_normalize(double angle);
 
 #endif
 
