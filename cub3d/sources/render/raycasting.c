@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/24 15:58:37 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/24 17:02:12 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	loop_line(t_program *program, t_line line)
 	mlx_texture_t	*tex;
 
 	tex = get_tex(program, line);
-	while (line.i < line.max)
+	while (line.i < line.max && line.i < W_HEIGHT)
 	{
 		if (line.type == 0 && program->player->rayrot < PI)
 			mlx_put_pixel(program->screen, line.step, line.i, \
@@ -68,15 +68,19 @@ void	loop_line(t_program *program, t_line line)
 	}
 }
 
-void	draw_line(t_program *program, int step, double distance, int type)
+void	draw_line(t_program *program, t_raycaster *rc, int type)
 {
 	t_line	line;
 
-	line.step = step;
+	line.step = W_WIDTH - rc->i;
 	line.type = type;
+	if (type == 0)
+		line.distance = rc->horizontal;
+	else
+		line.distance = rc->vertical;
 	line.fisheye = program->player->rotation - program->player->rayrot;
 	line.fisheye = a_normalize(line.fisheye);
-	line.distance = distance * cos(line.fisheye);
+	line.distance = line.distance * cos(line.fisheye);
 	line.l = W_HEIGHT / line.distance;
 	if (line.l > W_HEIGHT)
 		line.l = W_HEIGHT;
@@ -107,9 +111,9 @@ void	raycasting(t_program *program)
 		rc.horizontal = get_horizontal(program);
 		rc.vertical = get_vertical(program);
 		if (rc.horizontal < rc.vertical)
-			draw_line(program, W_WIDTH - rc.i, rc.horizontal, 0);
+			draw_line(program, &rc, 0);
 		else
-			draw_line(program, W_WIDTH - rc.i, rc.vertical, 1);
+			draw_line(program, &rc, 1);
 		rc.i++;
 		rc.holder += rc.step;
 	}
