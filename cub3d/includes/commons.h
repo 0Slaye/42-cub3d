@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/26 18:04:44 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/26 18:08:03 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void			set_map_grid(t_program *program);
 void			remove_nl(char *value);
 void			map_checker(t_program *program);
 void			check_cell_border(t_program *program, \
-char	**grid, int y, int x);
+char **grid, int y, int x);
 
 // Render
 void			s_window(t_program *program);
