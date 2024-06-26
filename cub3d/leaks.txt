@@ -9,3 +9,5 @@ Direct leak of 96 byte(s) in 4 object(s) allocated from:
 SUMMARY: AddressSanitizer: 16480 byte(s) leaked in 8 allocation(s). - SOLVED
 
 segfault sur .cub incorrect - SOLVED
+
+segfault sur 2048 x 1024

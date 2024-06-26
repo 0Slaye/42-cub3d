@@ -6,7 +6,7 @@
 /*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/24 15:07:49 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/25 16:02:09 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,48 +26,74 @@ int	is_in_map(char **grid, int y, int x)
 	return (1);
 }
 
-unsigned int	get_pixel_color(uint8_t *pixels, int width, int x, int y) {
-	int index = (y * width + x) * 4;
-	return (ft_pixel(pixels[index], pixels[index + 1], pixels[index + 2], pixels[index + 3]));
+mlx_texture_t	*get_tex(t_program *program, t_line line)
+{
+	if (line.type == 0 && program->player->rayrot < PI)
+		return (program->t_no);
+	else if (line.type == 0 && program->player->rayrot > PI)
+		return (program->t_so);
+	else if (line.type != 0 && \
+	(program->player->rayrot < PI / 2 || program->player->rayrot > 3 * PI / 2))
+		return (program->t_ea);
+	else
+		return (program->t_we);
 }
 
-void	draw_line(t_program *program, int step, double distance, int type)
+void	loop_line(t_program *program, t_line line)
 {
-	int		i;
-	int		length;
-	int		holder;
-	double	fisheye;
+	mlx_texture_t	*tex;
 
-	fisheye = program->player->rotation - program->player->rayrot;
-	if (fisheye < 0)
-		fisheye += (2 * PI);
-	if (fisheye > (2 * PI))
-		fisheye -= (2 * PI);
-	distance *= cos(fisheye);
-	length = W_HEIGHT / distance;
-	if (length > W_HEIGHT)
-		length = W_HEIGHT;
-	i = (W_HEIGHT / 2) - (length / 2);
-	int	a = 0;
-	holder = i + length;
-	double test = (program->player->x + cos(program->player->rayrot) * distance / cos(fisheye));
-	double test2 = (program->player->y - sin(program->player->rayrot) * distance / cos(fisheye));
-	test -= floor(test);
-	test2 -= floor(test2);
-	while (i < holder)
+	tex = get_tex(program, line);
+	while (line.i < line.max && line.i < W_HEIGHT)
 	{
-		if (type == 0 && program->player->rayrot < PI)
-			mlx_put_pixel(program->screen, step, i, get_pixel_color(program->t_no->pixels, program->t_no->width, test * program->t_no->width, a * program->t_no->width / length));
-		else if (type == 0 && program->player->rayrot > PI)
-			mlx_put_pixel(program->screen, step, i, get_pixel_color(program->t_so->pixels, program->t_so->width, test * program->t_so->width, a * program->t_so->width / length));
-
-		else if (type != 0 && (program->player->rayrot < PI / 2 || program->player->rayrot > 3 * PI / 2))
-			mlx_put_pixel(program->screen, step, i, get_pixel_color(program->t_we->pixels, program->t_we->width, test2 * program->t_we->width, a * program->t_we->width / length));
-		else if (type != 0 && !(program->player->rayrot < PI / 2 || program->player->rayrot > 3 * PI / 2))
-			mlx_put_pixel(program->screen, step, i, get_pixel_color(program->t_ea->pixels, program->t_ea->width, test2 * program->t_ea->width, a * program->t_ea->width / length));
-		i++;
-		a++;
+		if (line.type == 0 && program->player->rayrot < PI)
+			mlx_put_pixel(program->screen, line.step, line.i, \
+			get_pixel_color(tex->pixels, tex->width, line.p1 * tex->width, \
+			line.j * tex->width / line.l));
+		else if (line.type == 0 && program->player->rayrot > PI)
+			mlx_put_pixel(program->screen, line.step, line.i, \
+			get_pixel_color(tex->pixels, tex->width, \
+			fabs(line.p1 - 1.0) * tex->width, line.j * tex->width / line.l));
+		else if (line.type != 0 && (program->player->rayrot < PI / 2 \
+		|| program->player->rayrot > 3 * PI / 2))
+			mlx_put_pixel(program->screen, line.step, line.i, \
+			get_pixel_color(tex->pixels, tex->width, line.p2 * tex->width, \
+			line.j * tex->width / line.l));
+		else
+			mlx_put_pixel(program->screen, line.step, line.i, \
+			get_pixel_color(tex->pixels, tex->width, \
+			fabs(line.p2 - 1) * tex->width, line.j * tex->width / line.l));
+		line.i++;
+		line.j++;
 	}
+}
+
+void	draw_line(t_program *program, t_raycaster *rc, int type)
+{
+	t_line	line;
+
+	line.step = W_WIDTH - rc->i;
+	line.type = type;
+	if (type == 0)
+		line.distance = rc->horizontal;
+	else
+		line.distance = rc->vertical;
+	line.fisheye = program->player->rotation - program->player->rayrot;
+	line.fisheye = a_normalize(line.fisheye);
+	line.distance = line.distance * cos(line.fisheye);
+	line.l = W_HEIGHT / line.distance;
+	if (line.l > W_HEIGHT)
+		line.l = W_HEIGHT;
+	line.i = (W_HEIGHT / 2) - (line.l / 2);
+	line.j = 0;
+	line.max = line.i + line.l;
+	line.p1 = (program->player->x + cos(program->player->rayrot) \
+	* line.distance / cos(line.fisheye));
+	line.p2 = (program->player->y - sin(program->player->rayrot) \
+	* line.distance / cos(line.fisheye));
+	line.p1 -= floor(line.p1);
+	line.p2 -= floor(line.p2);
+	loop_line(program, line);
 }
 
 void	raycasting(t_program *program)
@@ -80,17 +106,14 @@ void	raycasting(t_program *program)
 	rc.holder = program->player->rotation - (PI / 3 / 2);
 	while (rc.i <= rc.rays)
 	{
-		if (rc.holder < 0)
-			rc.holder += (2 * PI);
-		if (rc.holder > (2 * PI))
-			rc.holder -= (2 * PI);
+		rc.holder = a_normalize(rc.holder);
 		program->player->rayrot = rc.holder;
 		rc.horizontal = get_horizontal(program);
 		rc.vertical = get_vertical(program);
 		if (rc.horizontal < rc.vertical)
-			draw_line(program, W_WIDTH - rc.i, rc.horizontal, 0);
+			draw_line(program, &rc, 0);
 		else
-			draw_line(program, W_WIDTH - rc.i, rc.vertical, 1);
+			draw_line(program, &rc, 1);
 		rc.i++;
 		rc.holder += rc.step;
 	}

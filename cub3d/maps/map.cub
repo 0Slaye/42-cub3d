@@ -1,6 +1,6 @@
 NO ./textures/test.png
 SO ./textures/test.png
-WE ./textures/texture_BR.png
+WE ./textures/test.png
 EA ./textures/test.png
 
 C 0,0,255
