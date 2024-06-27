@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:04:16 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/24 17:08:54 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:37:12 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void	delete_img(t_program program)
 {
+	if (program.t_no)
+		mlx_delete_texture(program.t_no);
+	if (program.t_so)
+		mlx_delete_texture(program.t_so);
+	if (program.t_we)
+		mlx_delete_texture(program.t_we);
+	if (program.t_ea)
+		mlx_delete_texture(program.t_ea);
 	if (program.screen)
 		mlx_delete_image(program.mlx, program.screen);
 	if (program.minimap)

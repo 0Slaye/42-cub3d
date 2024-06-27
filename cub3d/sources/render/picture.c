@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   picture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:31:52 by mde-lang          #+#    #+#             */
-/*   Updated: 2024/06/24 15:47:57 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:50:30 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	fc_printer(t_program *program)
 		fexit(program, EXIT_FAILURE, ER_MALLOC, STDERR_FILENO);
 	while (y < W_HEIGHT)
 	{
-		x = 0;
-		while (x++ < W_HEIGHT / 2)
+		x = -1;
+		while (++x < W_HEIGHT / 2)
 			mlx_put_pixel(program->screen, y, x, ft_pixel(ft_atoi(ceiling[0]),
 					ft_atoi(ceiling[1]), ft_atoi(ceiling[2]), 255));
-		while (x++ < W_HEIGHT)
+		while (++x < W_HEIGHT)
 			mlx_put_pixel(program->screen, y, x, ft_pixel(ft_atoi(floor[0]),
 					ft_atoi(floor[1]), ft_atoi(floor[2]), 255));
 		y++;

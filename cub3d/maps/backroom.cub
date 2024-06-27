@@ -4,7 +4,7 @@ WE ./textures/texture_BR.png
 EA ./textures/texture_BR.png
 
 F 163,123,0
-C 125,100,25
+C 125,100,250
 
         1111111111111111111111111
         1000000000110000000000001

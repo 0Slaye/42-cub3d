@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:52:49 by mde-lang          #+#    #+#             */
-/*   Updated: 2024/06/26 18:03:25 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:47:55 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void	draw_square(t_program *p, int x, int y, uint32_t color)
 	yy = y + SQUARE * p->map->ratio_y;
 	xx = x + SQUARE * p->map->ratio_x;
 	holder = x;
-	while (y < yy)
+	while (y < yy && y < W_HEIGHT)
 	{
 		x = holder;
-		while (x < xx)
+		while (x < xx && x < W_WIDTH / 2)
 			mlx_put_pixel(p->minimap, x++, y, color);
 		y++;
 	}

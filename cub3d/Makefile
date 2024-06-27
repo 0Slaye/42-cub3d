@@ -4,7 +4,7 @@
 
 NAME = cub3D
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g
 
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
@@ -57,6 +57,8 @@ BLUE = \033[1;34m
 all : $(NAME)
 
 $(NAME) : $(OBJS)
+	cd MLX42 && cmake -B build
+	cd MLX42 && cmake --build build -j4
 	@make bonus -C $(LIBFT) --no-print-directory
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT)/libft.a MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 	@echo "$(BOLD)[$(NAME)] : [$(BLUE)binary$(WHITE)] [$(GREEN)✔️$(WHITE)]$(RESET)"
@@ -70,6 +72,7 @@ clean :
 	@echo "$(BOLD)[$(NAME)] : [$(BLUE)objects$(WHITE)] [$(RED)✘$(WHITE)]$(RESET)"
 
 fclean : clean
+	@rm -rf MLX42/build
 	@make fclean -C $(LIBFT) --no-print-directory
 	@rm -f $(NAME)
 	@echo "$(BOLD)[$(NAME)] : [$(BLUE)binary$(WHITE)] [$(RED)✘$(WHITE)]$(RESET)"
