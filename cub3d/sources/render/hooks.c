@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/24 14:53:30 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/26 17:48:35 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,8 @@ void	look(t_player *player, int value)
 		player->rotation += 2 * PI;
 }
 
-void	hooks(void *program)
+void	is_key_down(t_program *p)
 {
-	t_program	*p;
-	mlx_t		*mlx;
-
-	p = (t_program *) program;
-	mlx = p->mlx;
-	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
-	{
-		mlx_close_window(mlx);
-		fexit(program, EXIT_SUCCESS, DB_END, STDIN_FILENO);
-	}
 	if (mlx_is_key_down(p->mlx, MLX_KEY_W))
 		move(p, 3 * PI / 2);
 	if (mlx_is_key_down(p->mlx, MLX_KEY_A))
@@ -71,7 +61,23 @@ void	hooks(void *program)
 		look(p->player, 1);
 	if (mlx_is_key_down(p->mlx, MLX_KEY_RIGHT))
 		look(p->player, -1);
+}
+
+void	hooks(void *program)
+{
+	t_program	*p;
+	mlx_t		*mlx;
+
+	p = (t_program *) program;
+	mlx = p->mlx;
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+	{
+		mlx_close_window(mlx);
+		fexit(program, EXIT_SUCCESS, DB_END, STDIN_FILENO);
+	}
+	is_key_down(program);
 	fc_printer(program);
 	raycasting(program);
 	draw_map(program);
+	draw_player(program);
 }

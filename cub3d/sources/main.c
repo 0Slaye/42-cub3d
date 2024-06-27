@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/21 16:19:41 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/26 18:03:32 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_program	*p_setup(int argc, char **argv)
 	program->player = NULL;
 	program->mlx = NULL;
 	program->screen = NULL;
+	program->minimap = NULL;
+	program->player_img = NULL;
 	return (program);
 }
 
@@ -57,6 +59,8 @@ t_map	*m_setup(t_program *program)
 	map->c = NULL;
 	map->lst_grid = NULL;
 	map->grid = NULL;
+	map->ratio_x = 1.0;
+	map->ratio_y = 1.0;
 	return (map);
 }
 

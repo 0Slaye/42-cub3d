@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   memory.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:04:16 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/17 18:22:47 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/24 17:08:54 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "commons.h"
+
+void	delete_img(t_program program)
+{
+	if (program.screen)
+		mlx_delete_image(program.mlx, program.screen);
+	if (program.minimap)
+		mlx_delete_image(program.mlx, program.minimap);
+}
 
 void	free_lst(t_list *lst)
 {
@@ -55,6 +63,7 @@ void	fexit(t_program *program, int code, char *value, int fd)
 		close(program->fd);
 	if (program->player)
 		free(program->player);
+	delete_img(*program);
 	free(program);
 	ft_putendl_fd(value, fd);
 	exit(code);

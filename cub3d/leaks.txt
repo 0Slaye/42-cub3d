@@ -1,0 +1,13 @@
+sanitize
+\\\\\\\\\\\\\\\\\\\\\\\\\
+Direct leak of 96 byte(s) in 4 object(s) allocated from:
+    #0 0x49a3cd in malloc (/home/mde-lang/Desktop/42-cub3d/cub3d/cub3D+0x49a3cd)
+    #1 0x4da2c0 in mlx_load_png (/home/mde-lang/Desktop/42-cub3d/cub3d/cub3D+0x4da2c0)
+    #2 0x4cbf16 in main /home/mde-lang/Desktop/42-cub3d/cub3d/sources/main.c:92:2
+    #3 0x7fa196029d8f in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
+
+SUMMARY: AddressSanitizer: 16480 byte(s) leaked in 8 allocation(s). - SOLVED
+
+segfault sur .cub incorrect - SOLVED
+
+segfault sur 2048 x 1024

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   picture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:31:52 by mde-lang          #+#    #+#             */
-/*   Updated: 2024/06/20 13:35:57 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/24 15:47:57 by mde-lang         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ void	fc_printer(t_program *program)
 	{
 		x = 0;
 		while (x++ < W_HEIGHT / 2)
-			mlx_put_pixel(program->screen, y, x, ft_pixel(ft_atoi(ceiling[0]), ft_atoi(ceiling[1]), ft_atoi(ceiling[2]), 255));
+			mlx_put_pixel(program->screen, y, x, ft_pixel(ft_atoi(ceiling[0]),
+					ft_atoi(ceiling[1]), ft_atoi(ceiling[2]), 255));
 		while (x++ < W_HEIGHT)
-			mlx_put_pixel(program->screen, y, x, ft_pixel(ft_atoi(floor[0]), ft_atoi(floor[1]), ft_atoi(floor[2]), 255));
+			mlx_put_pixel(program->screen, y, x, ft_pixel(ft_atoi(floor[0]),
+					ft_atoi(floor[1]), ft_atoi(floor[2]), 255));
 		y++;
 	}
 	free_split(ceiling);

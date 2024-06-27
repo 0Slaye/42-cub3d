@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/25 10:32:21 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/27 14:50:29 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define ROT 0.03
 
 # define SCELL 1.0
-# define SQUARE 8
+# define SQUARE 64
 # define PI 3.14159265358979323846
 # define OFFSET 0.000001
 
@@ -53,6 +53,8 @@ typedef struct map
 	char		*ea;
 	char		*f;
 	char		*c;
+	double		ratio_x;
+	double		ratio_y;
 	t_list		*lst_grid;	// map
 	char		**grid;		// map
 }	t_map;
@@ -106,6 +108,7 @@ typedef struct program
 	mlx_t			*mlx;
 	mlx_image_t		*screen;
 	mlx_image_t		*minimap;
+	mlx_image_t		*player_img;
 	char			**argv;
 	int				argc;
 	int				fd;
@@ -143,5 +146,7 @@ void			draw_map(t_program *p);
 int32_t			ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
 unsigned int	get_pixel_color(uint8_t *pixels, int width, int x, int y);
 double			a_normalize(double angle);
+void			draw_player(t_program *p);
+int				max_len_map(char **grid);
 
 #endif
