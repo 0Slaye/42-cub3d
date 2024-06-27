@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/27 14:50:29 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/27 16:13:08 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,11 @@ unsigned int	get_pixel_color(uint8_t *pixels, int width, int x, int y);
 double			a_normalize(double angle);
 void			draw_player(t_program *p);
 int				max_len_map(char **grid);
+int				is_in_tex(uint32_t y, uint32_t x);
+int				loop_line_horizontal(t_program *program, \
+t_line line, mlx_texture_t *tex);
+void			loop_line_vertical(t_program *program, \
+t_line line, mlx_texture_t *tex);
+void			set_line_dist(t_raycaster *rc, t_line *line, int type);
 
 #endif

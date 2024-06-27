@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:03:39 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/25 16:00:58 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:24:42 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	s_window(t_program *program)
 	mlx_image_t	*screen;
 	mlx_image_t	*minimap;
 
-	mlx = mlx_init(W_WIDTH, W_HEIGHT, "cub3D", true);
+	mlx = mlx_init(W_WIDTH, W_HEIGHT, "cub3D", false);
 	if (!mlx)
 		fexit(program, EXIT_FAILURE, ER_MLX, STDERR_FILENO);
 	screen = mlx_new_image(mlx, W_WIDTH / 2, W_HEIGHT);

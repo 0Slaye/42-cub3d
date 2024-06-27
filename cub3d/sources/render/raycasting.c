@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 15:44:59 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/27 14:50:58 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/27 16:12:59 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,59 +39,18 @@ mlx_texture_t	*get_tex(t_program *program, t_line line)
 		return (program->t_we);
 }
 
-int	is_in_tex(uint32_t y, uint32_t x)
-{
-	if (y >= W_HEIGHT)
-		return (0);
-	else if (x >= W_WIDTH)
-		return (0);
-	return (1);
-}
-
 void	loop_line(t_program *program, t_line line)
 {
 	mlx_texture_t	*tex;
+	int				result;
 
 	tex = get_tex(program, line);
+	result = 0;
 	while (line.i < line.max && line.i < W_HEIGHT)
 	{
-		if (line.type == 0 && program->player->rayrot < PI)
-		{
-			if (line.step < W_WIDTH && line.step >= 0 && line.i >= 0 && line.i < W_HEIGHT)
-			{
-				mlx_put_pixel(program->screen, line.step, line.i, get_pixel_color(\
-				tex->pixels, \
-				tex->width, \
-				line.p1 * tex->width, \
-				line.j * tex->width / (W_HEIGHT / line.distance)));
-			}
-		}
-
-		else if (line.type == 0 && program->player->rayrot > PI)
-		{
-			if (line.step < W_WIDTH && line.step >= 0 && line.i >= 0 && line.i < W_HEIGHT)
-			{
-				mlx_put_pixel(program->screen, line.step, line.i, \
-				get_pixel_color(tex->pixels, tex->width, \
-				fabs(line.p1 - 1.0) * tex->width, line.j * tex->width / (W_HEIGHT / line.distance)));
-			}
-		}
-		else if (line.type != 0 && (program->player->rayrot < PI / 2 \
-		|| program->player->rayrot > 3 * PI / 2) && is_in_tex(line.p2 * tex->width, line.j * tex->width / line.l))
-		{
-			if (line.step < W_WIDTH && line.step >= 0 && line.i >= 0 && line.i < W_HEIGHT)
-			{
-				mlx_put_pixel(program->screen, line.step, line.i, \
-				get_pixel_color(tex->pixels, tex->width, line.p2 * tex->width, \
-				line.j * tex->width / (W_HEIGHT / line.distance)));
-			}
-		}
-		else if (line.step < W_WIDTH && line.step >= 0 && line.i >= 0 && line.i < W_HEIGHT)
-		{
-			mlx_put_pixel(program->screen, line.step, line.i, \
-			get_pixel_color(tex->pixels, tex->width, \
-			fabs(line.p2 - 1) * tex->width, line.j * tex->width / (W_HEIGHT / line.distance)));
-		}
+		result = loop_line_horizontal(program, line, tex);
+		if (result == 0)
+			loop_line_vertical(program, line, tex);
 		line.i++;
 		line.j++;
 	}
@@ -103,10 +62,7 @@ void	draw_line(t_program *program, t_raycaster *rc, int type)
 
 	line.step = W_WIDTH - rc->i;
 	line.type = type;
-	if (type == 0)
-		line.distance = rc->horizontal;
-	else
-		line.distance = rc->vertical;
+	set_line_dist(rc, &line, type);
 	line.fisheye = program->player->rotation - program->player->rayrot;
 	line.fisheye = a_normalize(line.fisheye);
 	line.distance = line.distance * cos(line.fisheye);
