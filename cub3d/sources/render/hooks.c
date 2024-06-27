@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:10:10 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/27 15:51:17 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/27 21:01:03 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ bool	check_collision(t_program *p, double prediction_y, double prediction_x)
 	map_x = (int)floor(prediction_x);
 	if (p->map->grid[map_y][map_x] == WALL)
 		return (true);
+	if (p->map->grid[map_y][(int)floor(p->player->x)] == WALL \
+	&& p->map->grid[(int)floor(p->player->y)][map_x] == WALL)
+		return true;
 	return (false);
 }
 

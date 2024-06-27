@@ -7,6 +7,7 @@
         "type_traits": "c",
         "utility": "c",
         "random": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "cmath": "c"
     }
 }

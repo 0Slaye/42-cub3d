@@ -6,7 +6,7 @@
 /*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/27 16:13:08 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/27 20:39:33 by slaye            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # define W_WIDTH 1024
 # define W_HEIGHT 512
 
-# define MOVE 0.02
-# define ROT 0.03
+# define MOVE 0.1
+# define ROT 0.1
 
 # define SCELL 1.0
 # define SQUARE 64
