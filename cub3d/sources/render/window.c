@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:03:39 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/27 16:24:42 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/28 11:40:08 by uwywijas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void	s_window(t_program *program)
 	mlx_loop_hook(program->mlx, hooks, program);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
+	program->is_terminated = 1;
 }

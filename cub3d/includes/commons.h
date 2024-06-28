@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commons.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slaye <slaye@student.42.fr>                +#+  +:+       +#+        */
+/*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:10:53 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/27 21:12:12 by slaye            ###   ########.fr       */
+/*   Updated: 2024/06/28 11:39:38 by uwywijas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct program
 	mlx_texture_t	*t_so;
 	mlx_texture_t	*t_we;
 	mlx_texture_t	*t_ea;
+	int				is_terminated;
 }	t_program;
 
 // Main

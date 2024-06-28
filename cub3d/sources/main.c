@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mde-lang <mde-lang@student.42.fr>          +#+  +:+       +#+        */
+/*   By: uwywijas <uwywijas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 17:09:52 by slaye             #+#    #+#             */
-/*   Updated: 2024/06/26 18:03:32 by mde-lang         ###   ########.fr       */
+/*   Updated: 2024/06/28 11:39:49 by uwywijas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_program	*p_setup(int argc, char **argv)
 	program->screen = NULL;
 	program->minimap = NULL;
 	program->player_img = NULL;
+	program->is_terminated = 0;
 	return (program);
 }
 
